@@ -28,7 +28,7 @@ class CreateTokenView(ObtainAuthToken):
             data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.validated_data['user']
-            token = Token.objects.get_or_create(user=user)
+            token, created = Token.objects.get_or_create(user=user)
             return Response({
                 'error': False,
                 'token': token.key,
@@ -38,6 +38,7 @@ class CreateTokenView(ObtainAuthToken):
                 'is_admin': user.is_admin,
                 'is_client': user.is_client,
                 'is_recepcionista': user.is_recepcionista,
+                'created': created,
             },status=status.HTTP_302_FOUND)
         else:
             return Response({"error": True, "informacion": ERROR_SERIALIZER }, status=status.HTTP_400_BAD_REQUEST)
