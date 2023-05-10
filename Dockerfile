@@ -13,7 +13,7 @@ COPY manage.py /code/
 RUN chown -R myuser:myuser /code && chmod -R 755 /code
 ARG URL=0.0.0.0:4000
 
-user myuser
+USER myuser
 
 CMD ["sh", "-c", "python manage.py makemigrations core && python manage.py migrate && python manage.py runserver $URL"]
 

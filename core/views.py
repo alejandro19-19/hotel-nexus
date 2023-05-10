@@ -28,7 +28,7 @@ class CreateTokenView(ObtainAuthToken):
             data=request.data, context={'request': request})
         if serializer.is_valid():
             user = serializer.validated_data['user']
-            token, created = Token.objects.get_or_create(user=user)
+            token = Token.objects.get_or_create(user=user)
             return Response({
                 'error': False,
                 'token': token.key,
