@@ -38,6 +38,7 @@ class CreateTokenView(ObtainAuthToken):
                 'is_admin': user.is_admin,
                 'is_client': user.is_client,
                 'is_recepcionista': user.is_recepcionista,
+                'created': created,
             },status=status.HTTP_302_FOUND)
         else:
             return Response({"error": True, "informacion": ERROR_SERIALIZER }, status=status.HTTP_400_BAD_REQUEST)
