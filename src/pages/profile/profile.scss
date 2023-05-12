@@ -50,7 +50,28 @@
       margin-bottom: 20px;
       font-size: 25px;
       font-weight: lighter;
-      color: wheat;
+      color: white;
+    }
+
+    .input_form {
+      min-width: 250px;
+      height: 60px;
+      padding: 5px;
+      // border-radius: 5px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.486);
+      background-color: rgba(0, 0, 0, 0.2);
+
+      .title {
+        margin: 0;
+        font-size: 13px;
+        color: rgb(231, 231, 248);
+      }
+
+      .data {
+        margin: 0;
+        font-size: 18px;
+        color: white;
+      }
     }
   }
 }
