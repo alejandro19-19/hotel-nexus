@@ -17,6 +17,17 @@ class TestSetUp(APITestCase):
         self.clients_rooms_url = reverse('Crooms')
         self.free_rooms_url = reverse('rooms')
         
+        self.user_invalid_data ={
+
+            "tipo": "Manager",
+            "nombre": "prueba",
+            "apellido": "prueba",
+            "email": "test@test.com",
+            "direccion": "calle test",
+            "fecha_nacimiento": '2023-01-20',
+            "salario": 100,
+            "password": os.environ['TEST_PASSWORD']
+        }
         self.admin_data ={
 
             "tipo": "Admin",
