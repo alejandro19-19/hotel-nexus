@@ -7,21 +7,21 @@ import home_icon from "../../assets/home2.png";
 import { useNavigate } from "react-router-dom";
 
 const Rooms = () => {
-  const [t, i18n] = useTranslation("rooms");
-  const [name, setName] = useState("");
+  const [t] = useTranslation("rooms");
+  const [number, setNumber] = useState("");
   const [occupied, setOccupied] = useState("");
   const navigate = useNavigate()
 
   function sendData() {
-    fetch("http://localhost:8000/core/admin", {
+    fetch("http://127.0.0.1:8000/core/admin", {
       method: "POST",
       headers: {
-        Authorization: `Token a11f3965fdb57e523aefaac2e79b3aad194f0470`,
+        Authorization: `Token 3e80d96045c1eface698dcb2a0e028fa8d356974`,
         "Content-type": "application/json",
       },
-      body: JSON.stringify({ disponible: occupied }),
+      body: JSON.stringify({ disponible: occupied, numero: number }),
     }).then((res) => {
-      setName("");
+      setNumber("");
       setOccupied("");
     });
   }
@@ -49,16 +49,16 @@ const Rooms = () => {
         <h1>{t("register")}</h1>
         <form onSubmit={handleSubmit}>
           <div className="data">
-            <p>{t("name")}:</p>
+            <p>{t("number")}:</p>
             <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              type="number"
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
             />
-            <p>{t("occupied")}:</p>
+            <p>{t("available")}:</p>
             <input
               type="text"
-              values={occupied}
+              value={occupied}
               onChange={(e) => setOccupied(e.target.value)}
             />
             <button type="submit">{t("create")}</button>

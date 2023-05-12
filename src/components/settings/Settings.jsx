@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./settings.scss";
 import { ButtonIcon } from "../buttonIcon/ButtonIcon";
 import colombia from "../../assets/flag-colombia.svg";
@@ -6,11 +6,13 @@ import us from "../../assets/flag-us.svg";
 import profile from "../../assets/profile.svg";
 import logout from "../../assets/logout.svg";
 import { useTranslation } from "react-i18next";
+import { Context } from "../../context/Context";
 
 export const Settings = () => {
   const [open, setOpen] = useState(false);
   const [t, i18n] = useTranslation("settings");
-  const NAME = "Diego Fernando Chaverra Castillo";
+  const context = useContext(Context);
+  const NAME = context.appState.name;
 
   return (
     <div className="Settings">
@@ -26,7 +28,7 @@ export const Settings = () => {
             <p>{NAME}</p>
           </li>
           <li>
-            <ButtonIcon text={t("profile")} icon={profile} link={"/"} />
+            <ButtonIcon text={t("profile")} icon={profile} link={"/profile"} />
           </li>
           <li>
             <ButtonIcon
@@ -35,7 +37,6 @@ export const Settings = () => {
               link={"language"}
             />
           </li>
-          
           <li>
             <ButtonIcon text={t("sign_out")} icon={logout} link={"/"} />
           </li>

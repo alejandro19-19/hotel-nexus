@@ -1,7 +1,7 @@
 import "./profile.scss";
 import { Settings } from "../../components/settings/Settings";
 import Header from "../../components/header/Header";
-import { Box, Button, TextField } from "@mui/material";
+import { Box} from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useState } from "react";
@@ -42,10 +42,6 @@ const Profile = () => {
         <Formik onSubmit={submit} initialValues={data}>
           {({
             values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
             handleSubmit,
           }) => (
             <form onSubmit={handleSubmit}>
@@ -57,66 +53,26 @@ const Profile = () => {
                   "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
                 }}
               >
-                <TextField
-                  fullWidth
-                  variant="filled"
-                  type="text"
-                  label="Nombre"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.nombre}
-                  name="nombre"
-                  disabled
-                  sx={{ gridColumn: "span 2" }}
-                />
-                <TextField
-                  fullWidth
-                  variant="filled"
-                  type="text"
-                  label="Apellido"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.apellido}
-                  name="apellido"
-                  disabled
-                  sx={{ gridColumn: "span 2" }}
-                />
-                <TextField
-                  fullWidth
-                  variant="filled"
-                  type="text"
-                  label="Email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.email}
-                  name="email"
-                  disabled
-                  sx={{ gridColumn: "span 4" }}
-                />
-                <TextField
-                  fullWidth
-                  variant="filled"
-                  type="text"
-                  label="Dirección de residencia"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.direccion}
-                  name="direccion"
-                  disabled
-                  sx={{ gridColumn: "span 4" }}
-                />
-                <TextField
-                  fullWidth
-                  variant="filled"
-                  type="date"
-                  label="Fecha de nacimiento"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={values.fecha_nacimiento}
-                  name="fecha_nacimiento"
-                  disabled
-                  sx={{ gridColumn: "span 2" }}
-                />
+                <Box className="input_form" sx={{gridColumn: "span 2"}}>
+                  <p className="title">Nombre</p>
+                  <p className="data">{values.nombre}</p>
+                </Box>
+                <Box className="input_form" sx={{gridColumn: "span 2"}}>
+                  <p className="title">Apellido</p>
+                  <p className="data">{values.apellido}</p>
+                </Box>
+                <Box className="input_form" sx={{gridColumn: "span 4"}}>
+                  <p className="title">Email</p>
+                  <p className="data">{values.email}</p>
+                </Box>
+                <Box className="input_form" sx={{gridColumn: "span 4"}}>
+                  <p className="title">Dirección de residencia</p>
+                  <p className="data">{values.direccion}</p>
+                </Box>
+                <Box className="input_form" sx={{gridColumn: "span 2"}}>
+                  <p className="title">Fecha de nacimiento</p>
+                  <p className="data">{values.fecha_nacimiento}</p>
+                </Box>
               </Box>
             </form>
           )}

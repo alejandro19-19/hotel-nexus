@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 //import { useFetch } from "../../fetch/useFetch";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import "./login.scss";
 import icon from "../../assets/flecha.png";
 import { useNavigate } from "react-router-dom";
 import LanguageIcon from "@mui/icons-material/Language";
+import { Context } from "../../context/Context";
 
 const Login = () => {
   const [t, i18n] = useTranslation("login");
@@ -14,6 +15,8 @@ const Login = () => {
   const [contrasena, setContrasena] = useState("");
   //const [data, setData] = useState(null);
   const navigate = useNavigate();
+  const context = useContext(Context);
+  // console.log(context);
 
   const consultaUsuarioBD = async (datos) => {
     const data = await fetch("http://127.0.0.1:8000/core/login", datos);
@@ -33,10 +36,28 @@ const Login = () => {
       body: JSON.stringify(toSend),
     };
 
-    console.log("los Datos:", datos);
+    // console.log("los Datos:", datos);
 
     const response = await consultaUsuarioBD(datos);
     console.log("response:", response);
+
+    let typeUser = null;
+    if (response.is_admin === true) {
+      typeUser = "Admin";
+    } else if (response.client === true) {
+      typeUser = "Cliente";
+    } else {
+      typeUser = "Recepcionista";
+    }
+
+    let newData = {
+      loggedIn: true,
+      typeUser: typeUser,
+      name: response.name + " " + response.apellido,
+      token: `Token ${response.token}`,
+    };
+    context.setAppState(newData);
+    // console.log(context)
     navigate("/home");
   };
 

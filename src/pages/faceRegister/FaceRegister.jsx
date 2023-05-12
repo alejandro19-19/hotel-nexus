@@ -1,6 +1,5 @@
 import "./faceRegister.scss";
 import { Settings } from "../../components/settings/Settings";
-import Menu from "../../components/menu/Menu";
 import Header from "../../components/header/Header";
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
@@ -12,7 +11,7 @@ import { useTranslation } from "react-i18next";
 //import { DataObjectOutlined } from "@mui/icons-material";
 
 function FaceRegister() {
-  const [t, i18n] = useTranslation("faceRegister");
+  const [t] = useTranslation("faceRegister");
   
   const [data, setData] = useState({
     tipo: "Cliente",
