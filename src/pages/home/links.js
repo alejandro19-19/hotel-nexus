@@ -2,9 +2,9 @@ import profile from "../../assets/profile.jpg";
 import reservations from "../../assets/img3.png";
 import rooms from "../../assets/img4.jpg";
 
-const ADMIN = "Admin";
-const RECEPTIONIST = "Recepcionista";
-const CLIENT = "Cliente";
+const ADMIN = "admin";
+const RECEPTIONIST = "receptionist";
+const CLIENT = "client";
 
 let linksManager = [];
 let linksReceptionist = [];
