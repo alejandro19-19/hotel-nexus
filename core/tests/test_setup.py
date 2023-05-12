@@ -16,9 +16,7 @@ class TestSetUp(APITestCase):
         self.clients_all_url = reverse('clients')
         self.clients_rooms_url = reverse('Crooms')
         self.free_rooms_url = reverse('rooms')
-        
         self.user_invalid_data ={
-
             "tipo": "Manager",
             "nombre": "prueba",
             "apellido": "prueba",
@@ -29,7 +27,6 @@ class TestSetUp(APITestCase):
             "password": os.environ['TEST_PASSWORD']
         }
         self.admin_data ={
-
             "tipo": "Admin",
             "nombre": "prueba",
             "apellido": "prueba",
@@ -39,15 +36,12 @@ class TestSetUp(APITestCase):
             "salario": 100,
             "password": os.environ['TEST_PASSWORD']
         }
-
         self.login_admin_data = {
             'username':'test@test.com',
             'password': os.environ['TEST_PASSWORD']
         }
-
         self.client_data ={
-
-            "tipo": "Cliente",
+            "tipo": "Client",
             "nombre": "clienteprueba",
             "apellido": "prueba",
             "email": "test1@test.com",
@@ -56,15 +50,12 @@ class TestSetUp(APITestCase):
             "salario": 0,
             "password": os.environ['TEST_PASSWORD']
         }
-
         self.login_client_data = {
             'username':'test1@test.com',
             'password': os.environ['TEST_PASSWORD']
         }
-
         self.recep_data ={
-
-            "tipo": "Recepcionista",
+            "tipo": "Recepcionist",
             "nombre": "recepprueba",
             "apellido": "prueba",
             "email": "test2@test.com",
@@ -77,7 +68,6 @@ class TestSetUp(APITestCase):
             'username':'test2@test.com',
             'password': os.environ['TEST_PASSWORD']
         }
-
         self.room1_data = {
             "disponible": True,
             "numero": 1
@@ -86,28 +76,22 @@ class TestSetUp(APITestCase):
             "disponible": False,
             "numero": 2
         }
-        
         self.room1_bad_data ={
             "disponible": True,
             "numero": "camion"
         }
-
         self.room1_book_data = {
             
             "habitacion_id": 1
         }
-        
         self.room1_book_bad_data = {
             
             "habitacion_id": "carro"
-
         }
-
         self.room1_book_bad_id_data = {
             
             "habitacion_id": 50
         }
-
         return super().setUp()
     
     def tearDown(self):

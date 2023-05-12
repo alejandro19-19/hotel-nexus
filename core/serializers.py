@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model, authenticate
+from django.contrib.auth import get_user_model
 from core.models import Cliente, Administrador, Recepcionista, Habitacion, User
 
 class AuthTokenSerializer(serializers.Serializer):
@@ -9,9 +9,6 @@ class AuthTokenSerializer(serializers.Serializer):
         style={'input_type': 'password'},
         trim_whitespace=False
     )
-
-    
-    
 
 class UserSerializer(serializers.ModelSerializer):
     tipo = serializers.CharField(write_only=True)
@@ -26,20 +23,20 @@ class UserSerializer(serializers.ModelSerializer):
             user.save()
             Administrador.objects.create(
                 id_user=user, salario=salario)
-        elif tipo == "Cliente":
+        elif tipo == "Client":
             user = get_user_model().objects.create_user(**validated_data)
             user.is_client = True
             user.save()
             Cliente.objects.create(
                 id_user=user)
-        elif tipo == "Recepcionista":
+        elif tipo == "Recepcionist":
             user = get_user_model().objects.create_user(**validated_data)
             user.is_recepcionista = True
             user.save()
             Recepcionista.objects.create(
                 id_user=user, salario=salario)
         else:
-            raise serializers.ValidationError("Tipo de usuario invalido")
+            raise serializers.ValidationError("Invalid user type")
         return user
 
     class Meta:
@@ -59,15 +56,15 @@ class ClientDataSerializer(serializers.ModelSerializer):
 
 class StaffSerializer(serializers.ModelSerializer):
     id_user = ClientDataSerializer(many=False, read_only=True)
+
     class Meta:
         model = Administrador
         fields = ('id_user', 'salario')
 
-class HabitacionSerializer(serializers.ModelSerializer):
-
+class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habitacion
-        fields = ('id','disponible', 'numero')
+        fields = ('id', 'disponible', 'numero')
         
 class AdminClientSerializer(serializers.ModelSerializer):
     id_user = ClientDataSerializer(many=False, read_only=True)
@@ -78,7 +75,8 @@ class AdminClientSerializer(serializers.ModelSerializer):
 
 class ClientRoomSerializer(serializers.ModelSerializer):
     id_user = ClientDataSerializer(many=False, read_only=True)
-    habitacion_id = HabitacionSerializer(many=False, read_only=True)
+    habitacion_id = RoomSerializer(many=False, read_only=True)
+
     class Meta:
         model = Cliente
         fields = ("id_user", "habitacion_id")
