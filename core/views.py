@@ -164,15 +164,6 @@ def get_occupied_rooms(request):
     else:
         return Response({"error": True, "informacion": ERROR_STAFF }, status=status.HTTP_401_UNAUTHORIZED)
 
-#   Metodo que devulve el token de un usuario
-@api_view(['POST'])
-@authentication_classes([])
-@permission_classes([])
-def get_token(request):
-    user = User.objects.get(id=request.data['id_user'])
-    token = Token.objects.get(user=user)
-    return Response({"email": user.email, "token": token.key})
-
 #metodos auxiliares
 
 def verificar_habitacion(request,serializer):
