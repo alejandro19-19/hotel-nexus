@@ -43,12 +43,14 @@ const Login = () => {
 
     let typeUser = null;
     if (response.is_admin === true) {
-      typeUser = "Admin";
-    } else if (response.client === true) {
-      typeUser = "Cliente";
-    } else {
-      typeUser = "Recepcionista";
+      typeUser = "admin";
+    } else if (response.is_client === true) {
+      typeUser = "client";
+    } else if (response.is_recepcionista === true) {
+      typeUser = "receptionist";
     }
+
+    console.log(typeUser)
 
     let newData = {
       loggedIn: true,
