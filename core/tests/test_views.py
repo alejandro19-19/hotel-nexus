@@ -10,6 +10,10 @@ class TestViews(TestSetUp):
     def test_user_register_data(self):
         res = self.client.post(self.create_url, self.admin_data, format='json')
         self.assertEqual(res.status_code, 201)
+    
+    def test_user_register_invalid_data(self):
+        res = self.client.post(self.create_url, self.user_invalid_data, format='json')
+        self.assertEqual(res.status_code, 400)
 
     def test_user_connot_login_without_data(self):
         self.client.post(self.create_url, self.admin_data, format='json')
