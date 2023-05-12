@@ -10,21 +10,7 @@ class AuthTokenSerializer(serializers.Serializer):
         trim_whitespace=False
     )
 
-    def validate(self, attrs):
-        """validate and authenticate the user"""
-        email = attrs.get('email')
-        password = attrs.get('password')
-
-        user = authenticate(
-            request=self.context.get('request'),
-            username=email,
-            password=password
-        )
-        if not user:
-            msg = _('Imposible autenticar con esas credenciales')
-            raise serializers.ValidationError(msg, code='authentication')
-        attrs['user'] = user
-        return attrs
+    
     
 
 class UserSerializer(serializers.ModelSerializer):
@@ -52,7 +38,8 @@ class UserSerializer(serializers.ModelSerializer):
             user.save()
             Recepcionista.objects.create(
                 id_user=user, salario=salario)
-        #aqui falta implementar algo que retorne error 400 cuando no se ingrese un tipo valido
+        else:
+            raise serializers.ValidationError("Tipo de usuario invalido")
         return user
 
     class Meta:
