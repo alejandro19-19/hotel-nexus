@@ -1,9 +1,6 @@
 name: Update-subtrees
 
 on:
-  push:
-    branches:
-      - main
   repository_dispatch:
     types: [update-subtrees]
 
@@ -15,14 +12,14 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v2
       with:
+        persist-credentials: false
         # Fetch all branches and tags
         fetch-depth: 0
 
     - name: Configure Git identity
       run: |
-        git config --global user.email ${{ secrets.EMAIL }}
-        git config --global user.name ${{ secrets.NAME }}
-        git remote add origin https://github.com/santa51107HD/hotel-nexus.git
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
         
     # Actualiza el primer subdirectorio
     - name: Update Backend
@@ -31,12 +28,10 @@ jobs:
     # Actualiza el segundo subdirectorio
     - name: Update Frontend
       run: git subtree pull --prefix=frontend https://github.com/santa51107HD/frontend-hotel-nexus.git master
-        
+            
     # Envía los cambios al repositorio en GitHub
     - name: Push changes
-      run: |
-        remote_repo="${{ github.event.repository.full_name }}"
-        remote_branch="main"
-        git push "https://${{ env.GITHUB_TOKEN }}@github.com/${remote_repo}" HEAD:${remote_branch}
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.PRUEBA }}
+        branch: ${{ github.ref }}
