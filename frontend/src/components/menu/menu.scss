@@ -1,0 +1,11 @@
+.Menu {
+  background: rgb(10, 16, 36);
+
+  .container__menu {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+}
