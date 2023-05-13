@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Context } from "../../context/Context";
 import { useContext } from "react";
 
-export const ButtonIcon = ({ text, icon, link }) => {
+const ButtonIcon = ({ text, icon, link }) => {
   const navigate = useNavigate();
   const [t, i18n] = useTranslation();
   const context = useContext(Context);
@@ -33,3 +33,5 @@ export const ButtonIcon = ({ text, icon, link }) => {
     </div>
   );
 };
+
+export default ButtonIcon;
