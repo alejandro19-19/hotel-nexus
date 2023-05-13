@@ -31,6 +31,9 @@ jobs:
         
     # Envía los cambios al repositorio en GitHub
     - name: Push changes
-      run: git push origin main
+      run: |
+        remote_repo="${{ github.event.repository.full_name }}"
+        remote_branch="main"
+        git push "https://${{ env.GITHUB_TOKEN }}@github.com/${remote_repo}" HEAD:${remote_branch}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
