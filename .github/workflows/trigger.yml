@@ -4,12 +4,9 @@ on:
   push:
     branches:
       - master
-
 jobs:
   trigger_main_repository:
-    needs: testing
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'master' && github.event.pull_request.head.ref == 'develop'
     steps:
     - name: Trigger Update
       uses: peter-evans/repository-dispatch@v1
