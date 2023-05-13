@@ -28,6 +28,12 @@ jobs:
     - name: Update Frontend
       run: git subtree pull --prefix=frontend https://github.com/santa51107HD/frontend-hotel-nexus.git master
     
+    # Configura la autenticación de Git
+    - name: Set up Git authentication
+      run: |
+        git config --global credential.helper store
+        echo "protocol=https\nhost=github.com\nusername=github-actions[bot]\npassword=${{ secrets.GITHUB_TOKEN }}" > ~/.git-credentials
+        
     # Envía los cambios al repositorio en GitHub
     - name: Push changes
       run: git push origin main
