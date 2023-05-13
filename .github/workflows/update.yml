@@ -1,0 +1,28 @@
+name: Update-subtrees
+
+on:
+  repository_dispatch:
+    types: [update-subtrees]
+
+jobs:
+  update:
+    name: Update Subtrees
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+      with:
+        # Fetch all branches and tags
+        fetch-depth: 0
+
+    # Actualiza el primer subdirectorio
+    - name: Update Backend
+      run: git subtree pull --prefix=backend https://github.com/santa51107HD/backend-hotel-nexus.git master
+
+    # Actualiza el segundo subdirectorio
+    - name: Update Frontend
+      run: git subtree pull --prefix=frontend https://github.com/santa51107HD/frontend-hotel-nexus.git master
+
+    # Envía los cambios al repositorio en GitHub
+    - name: Push changes
+      run: git push origin main
