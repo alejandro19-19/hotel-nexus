@@ -19,6 +19,7 @@ jobs:
       run: |
         git config --global user.email ${{ secrets.EMAIL }}
         git config --global user.name ${{ secrets.NAME }}
+        git remote add origin https://github.com/santa51107HD/hotel-nexus.git
         
     # Actualiza el primer subdirectorio
     - name: Update Backend
@@ -27,12 +28,6 @@ jobs:
     # Actualiza el segundo subdirectorio
     - name: Update Frontend
       run: git subtree pull --prefix=frontend https://github.com/santa51107HD/frontend-hotel-nexus.git master
-    
-    # Configura la autenticación de Git
-    - name: Set up Git authentication
-      run: |
-        git config --global credential.helper store
-        echo "protocol=https\nhost=github.com\nusername=github-actions[bot]\npassword=${{ secrets.GITHUB_TOKEN }}" > ~/.git-credentials
         
     # Envía los cambios al repositorio en GitHub
     - name: Push changes
