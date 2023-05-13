@@ -1,6 +1,9 @@
 name: Update-subtrees
 
 on:
+  push:
+    branches:
+      - main
   repository_dispatch:
     types: [update-subtrees]
 
