@@ -15,6 +15,11 @@ jobs:
         # Fetch all branches and tags
         fetch-depth: 0
 
+    - name: Configure Git identity
+      run: |
+        git config --global user.email ${{ secrets.EMAIL }}
+        git config --global user.name ${{ secrets.NAME }}
+        
     # Actualiza el primer subdirectorio
     - name: Update Backend
       run: git subtree pull --prefix=backend https://github.com/santa51107HD/backend-hotel-nexus.git master
@@ -22,11 +27,7 @@ jobs:
     # Actualiza el segundo subdirectorio
     - name: Update Frontend
       run: git subtree pull --prefix=frontend https://github.com/santa51107HD/frontend-hotel-nexus.git master
-
-    - name: Configure Git identity
-      run: |
-        git config --global user.email ${{ secrets.EMAIL }}
-        git config --global user.name ${{ secrets.NAME }}
+    
     # Envía los cambios al repositorio en GitHub
     - name: Push changes
       run: git push origin main
