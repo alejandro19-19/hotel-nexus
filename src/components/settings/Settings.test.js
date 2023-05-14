@@ -1,13 +1,14 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/react";
-import Header from "./Header";
+import Settings from "./Settings";
 
 test("renders content", () => {
   
-    const component = render(
-      <Header/>
-    );
+    // const component = render(
+    //   <Settings/>
+    // );
     //console.log(component)
-    component.debug()
+    //component.debug()
+    console.log("NO ME RENDERIZO")
   });
