@@ -1,6 +1,5 @@
 import "./navDrawer.scss";
 import logo from "../../assets/Logo_Vertical.png";
-import { ListItemIcon, List, ListItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 const NavDrawer = ({ navLinks }) => {

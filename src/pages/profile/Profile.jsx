@@ -13,7 +13,7 @@ import { useFetch } from "../../hooks/useFetch";
 
 const Profile = () => {
   const context = useContext(Context);
-  console.log(context.appState.typeUser)
+  // console.log(context.appState.typeUser)
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const { data, loading } = useFetch(

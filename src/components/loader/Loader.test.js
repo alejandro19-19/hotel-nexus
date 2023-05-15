@@ -4,10 +4,8 @@ import { render, fireEvent } from "@testing-library/react";
 import Loader from "./Loader";
 
 test("renders content", () => {
-  
-    const component = render(
-      <Loader/>
-    );
-    //console.log(component)
-    component.debug()
-  });
+  const componente = render(
+      <Loader />
+  );
+  console.log(componente);
+});
