@@ -8,7 +8,7 @@ import logout from "../../assets/logout.svg";
 import { useTranslation } from "react-i18next";
 import { Context } from "../../context/Context";
 
-export const Settings = () => {
+const Settings = () => {
   const [open, setOpen] = useState(false);
   const [t, i18n] = useTranslation("settings");
   const context = useContext(Context);
@@ -45,3 +45,5 @@ export const Settings = () => {
     </div>
   );
 };
+
+export default Settings;

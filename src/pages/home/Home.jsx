@@ -15,8 +15,6 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const context = useContext(Context);
   let links = generateLinks(context.appState.typeUser, t);
-  // console.log(context)
-  // console.log(context.appState)
 
   useEffect(() => {
     setLoading(true);

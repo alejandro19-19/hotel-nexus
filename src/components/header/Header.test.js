@@ -8,6 +8,5 @@ test("renders content", () => {
     const component = render(
       <Header/>
     );
-    //console.log(component)
-    component.debug()
+    console.log(component)
   });

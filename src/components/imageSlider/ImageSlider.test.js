@@ -4,10 +4,8 @@ import { render, fireEvent } from "@testing-library/react";
 import ImageSlider from "./ImageSlider";
 
 test("renders content", () => {
-  
-    const component = render(
-      <ImageSlider/>
-    );
-    //console.log(component)
-    component.debug()
-  });
+  const componente = render(
+      <ImageSlider />
+  );
+  console.log(componente);
+});
