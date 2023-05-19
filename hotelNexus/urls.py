@@ -35,5 +35,9 @@ urlpatterns = [
     path('core/client/rooms',
          views.get_occupied_rooms, name = 'Crooms'),
     path('core/rooms/free',
-         views.get_free_rooms, name = 'rooms')
+         views.get_free_rooms, name = 'rooms'),
+    path('core/rooms/unassign',
+         views.unassign_room_client, name = 'unassign_room'),
+    path('core/rooms/assign',
+         views.assign_room_client, name = 'unassign_room')
 ]   
