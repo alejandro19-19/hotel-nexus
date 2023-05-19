@@ -168,6 +168,58 @@ def get_occupied_rooms(request):
     else:
         return Response({"error": True, "info": ERROR_STAFF }, status=status.HTTP_401_UNAUTHORIZED)
 
+#Metodo que le permite al staff desasignar habitaciones a los clientes
+
+@api_view(['PUT'])
+@require_http_methods(['PUT'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def unassign_room_client(request):
+    user = Token.objects.get(key=request.auth.key).user
+    if user.is_admin == True or user.is_recepcionista == True:
+        try:
+            user_client = Cliente.objects.get(id_user=request.data['id_user'])
+        except Cliente.DoesNotExist:
+            return Response({"error": True, "informacion": "El cliente ingresado no existe" }, status=status.HTTP_404_NOT_FOUND)
+        if user_client.habitacion_id != None:
+            room = Habitacion.objects.get(id = user_client.habitacion_id.id)
+            room.disponible = True
+            room.save()
+            user_client.habitacion_id = None
+            user_client.save()
+            serializer = AdminClientSerializer(
+                user_client, many=False, context={'request': request})
+            return Response(serializer.data,status=status.HTTP_200_OK)
+        else:
+            return Response({"error": True, "informacion": 'El cliente ingresado no tiene una habitación asignada' }, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response({"error": True, "informacion": ERROR_STAFF }, status=status.HTTP_401_UNAUTHORIZED)
+
+#Metodo que le permite al staff asignar habitaciones a los clientes
+
+@api_view(['PUT'])
+@require_http_methods(['PUT'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def assign_room_client(request):
+    user = Token.objects.get(key=request.auth.key).user
+    if user.is_admin == True or user.is_recepcionista == True:
+        try:
+            user_client = Cliente.objects.get(id_user=request.data['id_user'])
+        except Cliente.DoesNotExist:
+            return Response({"error": True, "informacion": "El cliente ingresado no existe" }, status=status.HTTP_404_NOT_FOUND)
+        if user_client.habitacion_id == None:
+            serializer = AssignRoomSerializer(
+            user_client, data={'habitacion_id':request.data['habitacion_id']}, context={'request': request})
+            if serializer.is_valid():
+                return verificar_habitacion(request, serializer)
+            else:
+                return Response({"error": True, "informacion": ERROR_SERIALIZER }, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response({"error": True, "informacion": 'El cliente ingresado ya tiene una habitación asignada'}, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        return Response({"error": True, "informacion": ERROR_STAFF }, status=status.HTTP_401_UNAUTHORIZED)
+
 #metodos auxiliares
 
 def verify_room(request,serializer):
