@@ -3,8 +3,8 @@
   "description": "Manage hotel rooms",
   "register": "Register",
   "create": "Create",
-  "name": "Name",
-  "occupied": "Occupied",
+  "number": "Number",
+  "available": "Available",
   "yes": "Yes",
   "no": "No"
 }

@@ -3,7 +3,10 @@ export const Context = createContext({});
 
 export default function ContextProvider({ children }) {
   let data = {
-    loginState: true,
+    loggedIn: false,
+    typeUser: "",
+    name: "",
+    token: "",
   };
   const [appState, setAppState] = useState(data);
   return (
