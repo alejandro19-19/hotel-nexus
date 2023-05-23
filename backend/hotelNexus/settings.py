@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-5+z1k#6lu%fywc6&+4)-e-21@#a&&k^-w1wd_$!y(snlb4pi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["quuy1q5v0h.execute-api.us-east-1.amazonaws.com"]
 
 
 # Application definition
@@ -41,7 +44,8 @@ INSTALLED_APPS = [
     'core',
     'rest_framework.authtoken',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'django_s3_storage'
 ]
 
 MIDDLEWARE = [
@@ -80,16 +84,16 @@ WSGI_APPLICATION = 'hotelNexus.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
+"""
 DATABASES = {
     'default': {
         'ENGINE':'django.db.backends.postgresql_psycopg2',  # database driver for postgres on django
-        'NAME': 'hotelNexus_db',  # database name
-        'USER': 'postgres',  # database user
-        'PASSWORD': '123456'  # database password cambiar a secretos
+        'NAME': os.environ.get('POSTGRES_DB_NAME'),  # database name
+        'USER': os.environ.get('POSTGRES_DB_USER'),  # database user
+        'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD_LOCAL')  # database password cambiar a secretos
     }
 }
-
+"""
     #configuracion para el docker-compose
 """
 DATABASES = {
@@ -103,6 +107,18 @@ DATABASES = {
     }
 }
 """
+    #configuracion para el deploy
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('POSTGRES_DB_NAME'),
+        'USER': os.environ.get('POSTGRES_DB_USER'),
+        'PASSWORD': os.environ.get('POSTGRES_DB_PASSWORD'),
+        'HOST': os.environ.get('POSTGRES_DB_HOST'),
+        'PORT': os.environ.get('POSTGRES_DB_PORT')
+    },
+}
 
 import sys
 if 'test' in sys.argv or 'test\_coverage' in sys.argv: #Covers regular testing and django-coverage
@@ -160,3 +176,21 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'core.User' 
+
+if DEBUG:
+   STATICFILES_DIRS = [
+   os.path.join(BASE_DIR, 'static'),
+   ]
+else:
+   STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+S3_BUCKET_NAME = "zappa-kkste569h"
+STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
+AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET_NAME
+# serve the static files directly from the specified s3 bucket
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % S3_BUCKET_NAME
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+# if you have configured a custom domain for your static files use:
+#AWS_S3_PUBLIC_URL_STATIC = "<https://static.yourdomain.com/>"

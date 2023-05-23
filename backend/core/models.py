@@ -27,6 +27,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_client = models.BooleanField('client status', default=False)
     is_recepcionista = models.BooleanField('recepcionista status', default=False)
     is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False, null=True, blank=True)
     objects = UserManager()
     USERNAME_FIELD = 'email'
 
