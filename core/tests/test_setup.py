@@ -16,6 +16,9 @@ class TestSetUp(APITestCase):
         self.clients_all_url = reverse('clients')
         self.clients_rooms_url = reverse('Crooms')
         self.free_rooms_url = reverse('rooms')
+        self.assign_room_url = reverse('assign_room')
+        self.unassign_room_url = reverse('unassign_room')
+
         self.user_invalid_data ={
             "tipo": "Manager",
             "nombre": "prueba",
@@ -91,6 +94,26 @@ class TestSetUp(APITestCase):
         self.room1_book_bad_id_data = {
             
             "habitacion_id": 50
+        }
+
+        self.assign_room_data = {
+            "id_user": 2,
+            "habitacion_id": 1
+        }
+        self.assign_room_data_fail = {
+            "id_user": 40,
+            "habitacion_id": 1
+        }
+        self.assign_bad_room_data = {
+            "id_user": 2,
+            "habitacion_id": 10
+        }
+
+        self.unasign_room_data = {
+            "id_user": 2
+        }
+        self.unasign_room_data_fail = {
+            "id_user": 40
         }
         return super().setUp()
     
