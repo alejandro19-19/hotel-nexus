@@ -39,5 +39,5 @@ urlpatterns = [
     path('core/rooms/unassign',
          views.unassign_room_client, name = 'unassign_room'),
     path('core/rooms/assign',
-         views.assign_room_client, name = 'unassign_room')
+         views.assign_room_client, name = 'assign_room')
 ]   
