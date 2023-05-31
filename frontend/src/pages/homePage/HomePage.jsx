@@ -1,7 +1,5 @@
 import "./homePage.scss";
 import { useTranslation } from "react-i18next";
-import { Context } from "../../context/Context";
-import { useContext, useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Grid from "@mui/material/Grid";
 import CardInformation from "../../components/cardInformation/CardInformation";
@@ -10,8 +8,7 @@ import imgVision from "../../assets/vision.png";
 import ImageSlider from "../../components/imageSlider/ImageSlider";
 
 const HomePage = () => {
-  const [t, i18n] = useTranslation("homePage");
-  const context = useContext(Context);
+  const [t] = useTranslation("homePage");
   const mision = {
     title: t("mission"),
     text: t("mission_text"),

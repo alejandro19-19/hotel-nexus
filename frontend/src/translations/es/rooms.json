@@ -3,8 +3,8 @@
   "description": "Administra las habitaciones del hotel",
   "register": "Registrar",
   "create": "Crear",
-  "name": "Nombre",
-  "occupied": "Ocupada",
+  "number": "Nombre",
+  "available": "Disponible",
   "yes": "Si",
   "no": "No"
 }
