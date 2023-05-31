@@ -5,8 +5,8 @@ import Header from "./Header";
 
 test("renders content", () => {
   
-    const component = render(
+    const componente = render(
       <Header/>
     );
-    console.log(component)
+    componente.debug()
   });

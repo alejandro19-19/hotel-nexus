@@ -1,4 +1,4 @@
-import { Settings } from "../../components/settings/Settings";
+import Settings from "../../components/settings/Settings";
 import Header from "../../components/header/Header";
 import { useTranslation } from "react-i18next";
 import "./rooms.scss";
