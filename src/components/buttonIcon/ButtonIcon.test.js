@@ -10,5 +10,18 @@ test("renders content", () => {
       <ButtonIcon />
     </BrowserRouter>
   );
-  console.log(componente);
+  componente.debug()
+});
+
+test("Button click", () => {
+
+  const component = render(
+    <BrowserRouter>
+      <ButtonIcon />
+    </BrowserRouter>
+  );
+
+  const button = component.getByTestId("click");
+  fireEvent.click(button);
+
 });

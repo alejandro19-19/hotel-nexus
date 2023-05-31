@@ -50,7 +50,7 @@ const Login = () => {
       typeUser = "receptionist";
     }
 
-    console.log(typeUser)
+    console.log(typeUser);
 
     let newData = {
       loggedIn: true,

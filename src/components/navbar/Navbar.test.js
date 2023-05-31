@@ -14,5 +14,36 @@ test("renders content", () => {
       </I18nextProvider>
     </BrowserRouter>
   );
-  console.log(componente);
+  componente.debug();
 });
+
+// test("Clicks Navbar", () => {
+//   const component = render(
+//     <BrowserRouter>
+//       <I18nextProvider i18n={i18next}>
+//         <Navbar />
+//       </I18nextProvider>
+//     </BrowserRouter>
+//   );
+//   const img = component.getByTestId("clickImg");
+//     fireEvent.click(img);
+
+//   describe("Img click", () => {
+    
+//   });
+
+//   describe("Img2 click", () => {
+//     const img = component.getByTestId("click-img2");
+//     fireEvent.click(img);
+//   });
+
+//   describe("Button click", () => {
+//     const btn = component.getByTestId("click-btn");
+//     fireEvent.click(btn);
+//   });
+
+//   describe("Language icon click", () => {
+//     const lng = component.getByTestId("click-lng");
+//     fireEvent.click(lng);
+//   });
+// });

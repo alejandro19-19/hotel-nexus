@@ -1,5 +1,5 @@
 import "./profile.scss";
-import { Settings } from "../../components/settings/Settings";
+import Settings from "../../components/settings/Settings";
 import Header from "../../components/header/Header";
 import { Box } from "@mui/material";
 import { Formik } from "formik";
