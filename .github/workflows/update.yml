@@ -47,32 +47,3 @@ jobs:
       run: |
         docker-compose build
         docker-compose push
-  
-  deploy:
-    needs: update
-    name: update deploy
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          
-      - name: Set up Python 
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.9
-
-      - name: Install pipenv
-        run: |
-          pip install pipenv
-
-      - name: Deploy
-        run: | 
-          cd backend
-          python -m pip install --upgrade pip
-          pipenv install -r requirements_deploy.txt
-          pipenv run aws configure set region us-east-1 --profile default
-          pipenv run aws configure set output json --profile default
-          pipenv run aws configure set aws_access_key_id ${{ secrets.ACCES_AMAZON }} --profile default
-          pipenv run aws configure set aws_secret_access_key ${{ secrets.SECRET_AMAZON }} --profile default
-          pipenv run zappa update
