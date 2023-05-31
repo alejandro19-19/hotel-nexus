@@ -13,4 +13,4 @@ jobs:
       with:
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
         repository: santa51107HD/hotel-nexus
-        event-type: update-subtrees
+        event-type: update-subtrees
