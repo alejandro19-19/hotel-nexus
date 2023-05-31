@@ -11,5 +11,5 @@ test("renders content", () => {
       <HomePage />
     </I18nextProvider>
   );
-  console.log(componente);
+  componente.debug()
 });

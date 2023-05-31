@@ -1,11 +1,13 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/react";
-import Loader from "./Loader";
+import translations from "./translations";
 
 test("renders content", () => {
   const componente = render(
-      <Loader />
+
+        <translations/>
+
   );
   componente.debug()
 });

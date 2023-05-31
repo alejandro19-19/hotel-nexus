@@ -15,7 +15,7 @@ const NavDrawer = ({ navLinks }) => {
           return (
             <div className="btn" key={item.title}>
               <img src={item.icon} alt={item.title} />
-              <button key={item.title} onClick={() => {navigate(item.path)}}>{item.title}</button>
+              <button data-testid="btnNavigate" key={item.title} onClick={() => {navigate(item.path)}}>{item.title}</button>
             </div>
           );
         })}

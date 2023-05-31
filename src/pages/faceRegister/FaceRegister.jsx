@@ -1,5 +1,5 @@
 import "./faceRegister.scss";
-import { Settings } from "../../components/settings/Settings";
+import Settings from "../../components/settings/Settings";
 import Header from "../../components/header/Header";
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";

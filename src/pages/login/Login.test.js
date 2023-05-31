@@ -14,5 +14,5 @@ test("renders content", () => {
       </I18nextProvider>
     </BrowserRouter>
   );
-  console.log(componente);
+  componente.debug()
 });
