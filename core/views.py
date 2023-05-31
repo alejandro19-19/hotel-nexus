@@ -212,7 +212,7 @@ def assign_room_client(request):
             serializer = AssignRoomSerializer(
             user_client, data={'habitacion_id':request.data['habitacion_id']}, context={'request': request})
             if serializer.is_valid():
-                return verificar_habitacion(request, serializer)
+                return verify_room(request, serializer)
             else:
                 return Response({"error": True, "informacion": ERROR_SERIALIZER }, status=status.HTTP_400_BAD_REQUEST)
         else:

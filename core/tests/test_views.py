@@ -59,7 +59,6 @@ class TestViews(TestSetUp):
         res = self.client.get(self.client_url, {}, **header)
         self.assertEqual(res.status_code, 404)
 
-
     def test_recep_get_information(self):
         self.client.post(self.create_url, self.recep_data, format='json')
         log = self.client.post(self.login_url,self.login_recep_data, format='json')
@@ -156,10 +155,6 @@ class TestViews(TestSetUp):
         res = self.client.put(self.client_url, data, **header)
         self.assertEqual(res.status_code, 400)
 
-
-
-
-
     def test_client_book_a_room_failure(self):
         self.client.post(self.create_url, self.admin_data, format='json')
         log = self.client.post(self.login_url,self.login_admin_data, format='json')
@@ -215,13 +210,110 @@ class TestViews(TestSetUp):
         res = self.client.get(self.clients_rooms_url, {}, **header)
         self.assertEqual(res.status_code, 401)
 
+    def test_non_staff_unassign_room(self):
+        self.client.post(self.create_url, self.client_data, format='json')
+        log = self.client.post(self.login_url,self.login_client_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        res = self.client.put(self.unassign_room_url, self.unasign_room_data, **header)
+        self.assertEqual(res.status_code, 401)
 
 
+    #________________________________________________________________________________________
+    def test_admin_unassign_room(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        self.client.post(self.admin_url, self.room1_data, **header)
+
+        self.client.post(self.create_url, self.client_data, format='json')
+        log1 = self.client.post(self.login_url,self.login_client_data, format='json')
+        Token1 = log1.data['token']
+        header1 = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token1)}
+        self.client.put(self.client_url, self.room1_book_data, **header1)
+
+        res = self.client.put(self.unassign_room_url, self.unasign_room_data, **header)
+        self.assertEqual(res.status_code, 200)
+    
+    def test_admin_unassign_room_failure(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+
+        self.client.post(self.create_url, self.client_data, format='json')
+
+        res = self.client.put(self.unassign_room_url, self.unasign_room_data, **header)
+        self.assertEqual(res.status_code, 400)
+    
+    def test_admin_unassign_room_bad_client(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+
+        self.client.post(self.create_url, self.client_data, format='json')
+
+        res = self.client.put(self.unassign_room_url, self.unasign_room_data_fail, **header)
+        self.assertEqual(res.status_code, 404)
         
+    def test_non_staff_assign_room(self):
+        self.client.post(self.create_url, self.client_data, format='json')
+        log = self.client.post(self.login_url,self.login_client_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        res = self.client.put(self.assign_room_url, self.unasign_room_data, **header)
+        self.assertEqual(res.status_code, 401)
 
+    def test_admin_assign_room(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        self.client.post(self.admin_url, self.room1_data, **header)
 
+        self.client.post(self.create_url, self.client_data, format='json')
 
-        
+        res = self.client.put(self.assign_room_url, self.assign_room_data, **header)
+        self.assertEqual(res.status_code, 200)
+    
+    def test_admin_assign_room_bad_client(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        self.client.post(self.admin_url, self.room1_data, **header)
 
-        
+        self.client.post(self.create_url, self.client_data, format='json')
 
+        res = self.client.put(self.assign_room_url, self.assign_room_data_fail, **header)
+        self.assertEqual(res.status_code, 404)
+    
+    def test_admin_assign_room_client_with_room(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        self.client.post(self.admin_url, self.room1_data, **header)
+
+        self.client.post(self.create_url, self.client_data, format='json')
+        log1 = self.client.post(self.login_url,self.login_client_data, format='json')
+        Token1 = log1.data['token']
+        header1 = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token1)}
+        self.client.put(self.client_url, self.room1_book_data, **header1)
+
+        res = self.client.put(self.assign_room_url, self.assign_room_data, **header)
+        self.assertEqual(res.status_code, 400)
+    
+    def test_admin_assign_bad_room(self):
+        self.client.post(self.create_url, self.admin_data, format='json')
+        log = self.client.post(self.login_url,self.login_admin_data, format='json')
+        Token = log.data['token']
+        header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
+        self.client.post(self.admin_url, self.room1_data, **header)
+
+        self.client.post(self.create_url, self.client_data, format='json')
+
+        res = self.client.put(self.assign_room_url, self.assign_bad_room_data, **header)
+        self.assertEqual(res.status_code, 400)
