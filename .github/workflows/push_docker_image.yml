@@ -16,7 +16,6 @@ jobs:
         access_token: ${{ github.token }}
         
   push_to_registry:
-    needs: update
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     steps:
