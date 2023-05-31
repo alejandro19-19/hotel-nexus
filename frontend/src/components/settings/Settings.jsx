@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import "./settings.scss";
-import { ButtonIcon } from "../buttonIcon/ButtonIcon";
+import ButtonIcon from "../buttonIcon/ButtonIcon";
 import colombia from "../../assets/flag-colombia.svg";
 import us from "../../assets/flag-us.svg";
 import profile from "../../assets/profile.svg";

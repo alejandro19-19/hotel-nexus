@@ -16,5 +16,21 @@ test("renders content", () => {
       <NavDrawer navLinks={navLinksPage} />
     </BrowserRouter>
   );
-  console.log(componente);
+  componente.debug();
+});
+
+test("Button click", () => {
+  const navLinksPage = [
+    { title: "login", path: "/login", icon: loginImage },
+  ];
+
+  const component = render(
+    <BrowserRouter>
+      <NavDrawer navLinks={navLinksPage} />
+    </BrowserRouter>
+  );
+
+  const button = component.getByTestId("btnNavigate");
+  fireEvent.click(button);
+
 });

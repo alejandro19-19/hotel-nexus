@@ -7,5 +7,5 @@ test("renders content", () => {
   const componente = render(
       <CardInformation />
   );
-  console.log(componente);
+  componente.debug()
 });

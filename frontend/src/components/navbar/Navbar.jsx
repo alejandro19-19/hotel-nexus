@@ -17,7 +17,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const isNonMobile = useMediaQuery("(min-width:600px)");
   const [t, i18n] = useTranslation("homePage");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const navLinksPage = [
     { title: t("login"), path: "/login", icon: loginImage },
@@ -38,14 +38,32 @@ const Navbar = () => {
         <video src={video} autoPlay loop muted />
       </div>
       <nav style={{ height: `${isNonMobile ? "90px" : "60px"}` }}>
-        <img src={logo} alt="Logo" onClick={() => {navigate("/")}}/>
+        <img
+          src={logo}
+          alt="Logo"
+          data-testid="clickImg"
+          onClick={() => {
+            navigate("/");
+          }}
+        />
         {isNonMobile ? (
           <Box display={"flex"} alignItems={"center"}>
             {navLinksPage.map((item) => {
-              return <button key={item.title} onClick={() => {navigate(item.path)}}>{item.title}</button>;
+              return (
+                <button
+                  key={item.title}
+                  data-testid="click-btn"
+                  onClick={() => {
+                    navigate(item.path);
+                  }}
+                >
+                  {item.title}
+                </button>
+              );
             })}
             <LanguageIcon
               style={{ color: "white", fontSize: 40, cursor: "pointer" }}
+              data-testid="click-lng"
               onClick={() => {
                 i18n.language === "es"
                   ? i18n.changeLanguage("en")
@@ -58,6 +76,7 @@ const Navbar = () => {
             className="menu"
             src={menu}
             alt="menu"
+            data-testid="click-img2"
             onClick={() => setOpen(true)}
           />
         )}

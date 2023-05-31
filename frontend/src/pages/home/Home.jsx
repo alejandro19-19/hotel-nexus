@@ -7,7 +7,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { generateLinks } from "./links";
 import Loader from "../../components/loader/Loader";
 import { Context } from "../../context/Context";
-import { Settings } from "../../components/settings/Settings";
+import Settings from "../../components/settings/Settings";
 
 const Home = () => {
   const [t] = useTranslation("home");
