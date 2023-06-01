@@ -9,6 +9,7 @@ COPY requirements.txt /code/
 RUN pip install -r requirements.txt
 COPY core /code/core
 COPY hotelNexus /code/hotelNexus
+COPY hotelNexus/settings_dev.py /code/hotelNexus/settings.py
 COPY manage.py /code/
 RUN chown -R myuser:myuser /code && chmod -R 755 /code
 ARG URL=0.0.0.0:4000
