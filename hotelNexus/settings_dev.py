@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'hotelNexus.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:'
+        'NAME': 'database'
     }
 }
 
