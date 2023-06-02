@@ -58,7 +58,7 @@ class TestSetUp(APITestCase):
             'password': os.environ['TEST_PASSWORD']
         }
         self.recep_data ={
-            "tipo": "Recepcionist",
+            "tipo": "Receptionist",
             "nombre": "recepprueba",
             "apellido": "prueba",
             "email": "test2@test.com",
