@@ -25,7 +25,7 @@ function Register() {
   const registro = async (e) => {
     e.preventDefault();
     let toSend = {
-      tipo: "Cliente",
+      tipo: "Client",
       nombre: nombre,
       apellido: apellidos,
       email: correo,

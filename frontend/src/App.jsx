@@ -18,7 +18,8 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route path="rooms" element={<Rooms />} />
-          <Route path="faceRegister" element={<FaceRegister />} />
+          <Route path="clientRegister" element={<FaceRegister userType={"Client"}/>} />
+          <Route path="recepRegister" element={<FaceRegister userType={"Receptionist"}/>} />
         </Route>
       </Routes>
     </div>

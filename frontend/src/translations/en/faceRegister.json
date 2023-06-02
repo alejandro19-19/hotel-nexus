@@ -8,5 +8,6 @@
     "address": "Address",
     "date": "Birthdate",
     "password": "Password",
+    "salary": "Salary",
     "register": "Create Account"
 }
