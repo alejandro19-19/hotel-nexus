@@ -12,6 +12,8 @@ import rooms_en from "./en/rooms.json"
 import rooms_es from "./es/rooms.json"
 import faceRegister_en from "./en/faceRegister.json"
 import faceRegister_es from "./es/faceRegister.json"
+import cardRoom_en from "./en/cardRoom.json"
+import cardRoom_es from "./es/cardRoom.json"
 
 
 export let languages = {
@@ -26,6 +28,7 @@ export let languages = {
       register: register_es,
       rooms: rooms_es,
       faceRegister: faceRegister_es,
+      cardRoom: cardRoom_es,
     },
     en: {
       homePage: homePage_en,
@@ -35,6 +38,7 @@ export let languages = {
       register: register_en,
       rooms: rooms_en,
       faceRegister: faceRegister_en,
+      cardRoom: cardRoom_en,
     },
   },
 };

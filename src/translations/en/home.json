@@ -6,5 +6,7 @@
   "reservations": "Reservations",
   "reservations_description": "Reserve your room",
   "rooms": "Rooms",
-  "rooms_description": "Manage hotel rooms"
+  "rooms_description": "Manage hotel rooms",
+  "registerRecep": "Receptionist Registration",
+  "registerRecep_description": "Create a new receptionist"
 }

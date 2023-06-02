@@ -29,7 +29,7 @@
   .settings_rooms {
     position: absolute;
     top: 15px;
-    right: 0;
+    right: 45px;
   }
 
   .register_room {
@@ -81,5 +81,54 @@
         }
       }
     }
+  }
+
+  .menu {
+    min-width: 250px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 20px;
+    // padding: 5px;
+    // border-radius: 10px 10px 0 0;
+    // background-color: rgba(34, 29, 58, 0.3);
+
+    button {
+      width: 130px;
+      margin: 15px;
+      padding: 5px;
+      background-color: rgba(34, 29, 58, 0.3);
+      border-radius: 10px;
+      transition: 0.4s ease;
+
+      &:hover {
+        // border: solid green 1px;
+        background-color: rgba(3, 100, 19, 0.3);
+      }
+    }
+
+    .occuped {
+      transform: scale(120%);
+      background-color: rgba(5, 168, 32, 0.3);
+      border: solid green 1px;
+    }
+
+    .free {
+      transform: scale(120%);
+      background-color: rgba(5, 168, 32, 0.3);
+      border: solid green 1px;
+    }
+  }
+
+  .cards {
+    max-width: 800px;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(34, 29, 58, 0.3);
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
