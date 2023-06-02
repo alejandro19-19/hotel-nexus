@@ -6,5 +6,7 @@
   "number": "Number",
   "available": "Available",
   "yes": "Yes",
-  "no": "No"
+  "no": "No",
+  "occupied": "Occupied",
+  "free": "Free"
 }
