@@ -8,5 +8,6 @@
     "address": "Direccion de Residencia",
     "date": "Cumpleaños",
     "password": "Contraseña",
+    "salary": "Salario",
     "register": "Crear cuenta"
 }

@@ -10,11 +10,11 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 //import { DataObjectOutlined } from "@mui/icons-material";
 
-function FaceRegister() {
+function FaceRegister({ userType }) {
   const [t] = useTranslation("faceRegister");
-  
+
   const [data, setData] = useState({
-    tipo: "Cliente",
+    tipo: userType,
     nombre: "",
     apellido: "",
     email: "",
@@ -23,7 +23,7 @@ function FaceRegister() {
     salario: "0",
     password: "",
   });
-  
+
   const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
@@ -37,20 +37,20 @@ function FaceRegister() {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
-        tipo: "Cliente",
+        tipo: userType,
         nombre: values.nombre,
         apellido: values.apellido,
         email: values.email,
         direccion: values.direccion,
         fecha_nacimiento: values.fecha_nacimiento,
-        salario: "0",
+        salario: values.salario,
         password: values.contraseña,
       }),
     };
 
     console.log("los Datos:", datos);
 
-    const response = await consultaUsuarioBD(datos)
+    const response = await consultaUsuarioBD(datos);
 
     console.log("response:", response);
   };
@@ -70,7 +70,7 @@ function FaceRegister() {
           <img src={home_icon} alt="home" />
         </div>
         <div className="settings_faceRegister">
-        <Settings/>
+          <Settings />
         </div>
         <Header title={t("title")} subtitle={t("sub_title")} />
         <div className="formulario">
@@ -99,7 +99,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("name")} 
+                    label={t("name")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="nombre"
@@ -110,7 +110,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("last_name")} 
+                    label={t("last_name")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="apellido"
@@ -121,7 +121,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("email")} 
+                    label={t("email")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="email"
@@ -132,7 +132,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("address")} 
+                    label={t("address")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="direccion"
@@ -143,18 +143,31 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="date"
-                    label={t("date")} 
+                    label={t("date")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="fecha_nacimiento"
                     disabled={false}
                     sx={{ gridColumn: "span 4" }}
                   />
+                  {userType == "Receptionist" && (
+                    <TextField
+                      fullWidth
+                      variant="filled"
+                      type="text"
+                      label={t("salary")}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      name="salario"
+                      disabled={false}
+                      sx={{ gridColumn: "span 4" }}
+                    />
+                  )}
                   <TextField
                     fullWidth
                     variant="filled"
                     type="password"
-                    label={t("password")} 
+                    label={t("password")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="contraseña"
@@ -169,7 +182,7 @@ function FaceRegister() {
                   mt="20px"
                 >
                   <Button type="submit" variant="contained">
-                    {t("register")} 
+                    {t("register")}
                   </Button>
                 </Box>
               </form>

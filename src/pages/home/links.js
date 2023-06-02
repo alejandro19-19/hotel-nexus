@@ -30,6 +30,14 @@ export function generateLinks(type, func) {
           color: "purple",
           path: "/rooms",
         },
+        {
+          title: func("registerRecep"),
+          description: func("registerRecep_description"),
+          image: rooms,
+          number: 3,
+          color: "red",
+          path: "/recepRegister",
+        },
       ]);
     case RECEPTIONIST:
       return (linksUser = [
@@ -47,7 +55,7 @@ export function generateLinks(type, func) {
           image: rooms,
           number: 2,
           color: "purple",
-          path: "/faceRegister",
+          path: "/clientRegister",
         },
       ]);
 
