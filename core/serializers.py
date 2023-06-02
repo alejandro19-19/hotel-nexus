@@ -29,7 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
             user.save()
             Cliente.objects.create(
                 id_user=user)
-        elif tipo == "Recepcionist":
+        elif tipo == "Receptionist":
             user = get_user_model().objects.create_user(**validated_data)
             user.is_recepcionista = True
             user.save()
