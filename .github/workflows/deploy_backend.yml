@@ -29,8 +29,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push
       run: |
-        docker-compose build mystore_ms
-        docker-compose push mystore_ms
+        docker-compose -f pruebasFuncionales.yml build
+        docker-compose -f pruebasFuncionales.yml push
         
   deploy:
     name: update deploy
