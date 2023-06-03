@@ -6,14 +6,15 @@ import Home from "./pages/home/Home"
 import Rooms from "./pages/rooms/Rooms"
 import Profile from "./pages/profile/Profile"
 import FaceRegister from "./pages/faceRegister/FaceRegister"
+import Clients from "./pages/clients/Clients"
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/">
-          <Route index element={<HomePage />}/>
-          {/* <Route index element={<Rooms />}/> */}
+          {/* <Route index element={<HomePage />}/> */}
+          <Route index element={<Clients />}/>
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="home" element={<Home />} />
@@ -21,6 +22,7 @@ function App() {
           <Route path="rooms" element={<Rooms />} />
           <Route path="clientRegister" element={<FaceRegister userType={"Client"}/>} />
           <Route path="recepRegister" element={<FaceRegister userType={"Receptionist"}/>} />
+          <Route path="clients" element={<Clients />} />
         </Route>
       </Routes>
     </div>
