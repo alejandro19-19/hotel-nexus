@@ -1,16 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../context/Context";
 
-export function useFetch(url, token) {
+export function useFetch(url) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const context = useContext(Context)
 
   useEffect(() => {
     setLoading(true);
     fetch(url, {
       method: "GET",
       headers: {
-        Authorization: token,
+        Authorization: context.appState.token,
         "Content-type": "application/json",
       },
     })

@@ -12,7 +12,10 @@ import rooms_en from "./en/rooms.json"
 import rooms_es from "./es/rooms.json"
 import faceRegister_en from "./en/faceRegister.json"
 import faceRegister_es from "./es/faceRegister.json"
-
+import cardRoom_en from "./en/cardRoom.json"
+import cardRoom_es from "./es/cardRoom.json"
+import clients_en from "./en/clients.json"
+import clients_es from "./es/clients.json"
 
 export let languages = {
   interpolation: { escapeValue: false },
@@ -26,6 +29,8 @@ export let languages = {
       register: register_es,
       rooms: rooms_es,
       faceRegister: faceRegister_es,
+      cardRoom: cardRoom_es,
+      clients: clients_es,
     },
     en: {
       homePage: homePage_en,
@@ -35,6 +40,8 @@ export let languages = {
       register: register_en,
       rooms: rooms_en,
       faceRegister: faceRegister_en,
+      cardRoom: cardRoom_en,
+      clients: clients_en,
     },
   },
 };

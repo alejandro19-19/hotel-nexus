@@ -6,5 +6,7 @@
   "number": "Nombre",
   "available": "Disponible",
   "yes": "Si",
-  "no": "No"
+  "no": "No",
+  "occupied": "Ocupadas",
+  "free": "Libres"
 }
