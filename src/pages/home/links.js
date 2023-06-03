@@ -1,6 +1,8 @@
 import profile from "../../assets/profile.jpg";
 import reservations from "../../assets/img3.png";
 import rooms from "../../assets/img4.jpg";
+import recep from "../../assets/img5.jpg";
+import client from "../../assets/img6.jpg";
 
 const ADMIN = "admin";
 const RECEPTIONIST = "receptionist";
@@ -33,10 +35,18 @@ export function generateLinks(type, func) {
         {
           title: func("registerRecep"),
           description: func("registerRecep_description"),
-          image: rooms,
+          image: recep,
           number: 3,
           color: "red",
           path: "/recepRegister",
+        },
+        {
+          title: func("clients"),
+          description: func("clients_description"),
+          image: client,
+          number: 4,
+          color: "purple",
+          path: "/clients",
         },
       ]);
     case RECEPTIONIST:
