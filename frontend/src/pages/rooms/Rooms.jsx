@@ -2,21 +2,33 @@ import Settings from "../../components/settings/Settings";
 import Header from "../../components/header/Header";
 import { useTranslation } from "react-i18next";
 import "./rooms.scss";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import home_icon from "../../assets/home2.png";
 import { useNavigate } from "react-router-dom";
+import CardRoom from "../../components/cardRoom/CardRoom";
+import { useFetch } from "../../hooks/useFetch";
+import { Context } from "../../context/Context";
 
 const Rooms = () => {
   const [t] = useTranslation("rooms");
   const [number, setNumber] = useState("");
   const [occupied, setOccupied] = useState("");
-  const navigate = useNavigate()
+  const [roomOccupied, setRoomOccupied] = useState("occuped");
+  const [free, setFree] = useState("");
+  const navigate = useNavigate("");
+  const context = useContext(Context);
+  const { data: dataOccupeid, loading: loadingOccupied } = useFetch(
+    "http://127.0.0.1:8000/core/client/rooms"
+  );
+  const { data: dataFree, loading: loadingFree } = useFetch(
+    "http://127.0.0.1:8000/core/rooms/free"
+  );
 
   function sendData() {
     fetch("http://127.0.0.1:8000/core/admin", {
       method: "POST",
       headers: {
-        Authorization: `Token 3e80d96045c1eface698dcb2a0e028fa8d356974`,
+        Authorization: `${context.appState.token}`,
         "Content-type": "application/json",
       },
       body: JSON.stringify({ disponible: occupied, numero: number }),
@@ -64,6 +76,48 @@ const Rooms = () => {
             <button type="submit">{t("create")}</button>
           </div>
         </form>
+      </div>
+      <div className="menu">
+        <button
+          className={roomOccupied}
+          onClick={() => {
+            setRoomOccupied("occuped");
+            setFree("");
+          }}
+        >
+          {t("occupied")}
+        </button>
+        <button
+          className={free}
+          onClick={() => {
+            setRoomOccupied("");
+            setFree("free");
+          }}
+        >
+          {t("free")}
+        </button>
+      </div>
+      <div className="cards">
+        {roomOccupied != "" &&
+          dataOccupeid?.map((item) => {
+            return (
+              <CardRoom
+                key={item.habitacion_id.id}
+                number={item.habitacion_id.numero}
+                available={item.habitacion_id.disponible}
+              />
+            );
+          })}
+        {free != "" &&
+          dataFree?.map((item) => {
+            return (
+              <CardRoom
+                key={item.id}
+                number={item.numero}
+                available={item.disponible}
+              />
+            );
+          })}
       </div>
     </div>
   );

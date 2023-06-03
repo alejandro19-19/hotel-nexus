@@ -9,6 +9,8 @@
   "rooms_description": "Administra las habitaciones del hotel",
   "registerRecep": "Registrar recepcionista",
   "registerRecep_description": "Crea un nuevo recepcionista",
+  "clients": "Clientes",
+  "clients_description": "Administrar clientes",
   "name": "Nombre",
   "occupied": "Ocupada",
   "yes": "Si",
