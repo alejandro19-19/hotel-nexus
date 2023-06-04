@@ -8,14 +8,18 @@ import icon from "../../assets/flecha.png";
 import { useNavigate } from "react-router-dom";
 import LanguageIcon from "@mui/icons-material/Language";
 import { Context } from "../../context/Context";
+import AlertMessage from "../../components/alertMessage/AlertMessage";
 
 const Login = () => {
   const [t, i18n] = useTranslation("login");
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
-  //const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
   const navigate = useNavigate();
   const context = useContext(Context);
+  const [alert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const [typeError, setTypeError] = useState("success");
   // console.log(context);
 
   const consultaUsuarioBD = async (datos) => {
@@ -41,31 +45,44 @@ const Login = () => {
     const response = await consultaUsuarioBD(datos);
     console.log("response:", response);
 
-    let typeUser = null;
-    if (response.is_admin === true) {
-      typeUser = "admin";
-    } else if (response.is_client === true) {
-      typeUser = "client";
-    } else if (response.is_recepcionista === true) {
-      typeUser = "receptionist";
+    if (!response.error) {
+      let typeUser = null;
+      if (response.is_admin === true) {
+        typeUser = "admin";
+      } else if (response.is_client === true) {
+        typeUser = "client";
+      } else if (response.is_recepcionista === true) {
+        typeUser = "receptionist";
+      }
+
+      console.log(typeUser);
+
+      let newData = {
+        loggedIn: true,
+        typeUser: typeUser,
+        name: response.name + " " + response.apellido,
+        token: `Token ${response.token}`,
+      };
+      context.setAppState(newData);
+      // console.log(context)
+      setMessage(t("success"));
+      setTypeError("success");
+      setAlert(true);
+      setTimeout(function () {
+        navigate("/home");
+      }, 500);
+    } else {
+      setError(true);
+      setMessage(t("error"));
+      setTypeError("error");
+      setAlert(true);
     }
-
-    console.log(typeUser);
-
-    let newData = {
-      loggedIn: true,
-      typeUser: typeUser,
-      name: response.name + " " + response.apellido,
-      token: `Token ${response.token}`,
-    };
-    context.setAppState(newData);
-    // console.log(context)
-    navigate("/home");
   };
 
   return (
     <>
       <div className="Login grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        {alert ? <AlertMessage message={message} type={typeError} /> : null}
         <div className="idioma">
           <LanguageIcon
             style={{ color: "black", fontSize: 40, cursor: "pointer" }}
@@ -101,7 +118,11 @@ const Login = () => {
                   type="email"
                   className="w-full max-w-md py-2 px-4 rounded-lg outline-none"
                   placeholder={t("email")}
-                  onChange={(e) => setCorreo(e.target.value)}
+                  onChange={(e) => {
+                    setCorreo(e.target.value);
+                    setError(false);
+                    setAlert(false);
+                  }}
                 />
               </div>
               <div className="flex justify-center mb-6">
@@ -109,9 +130,18 @@ const Login = () => {
                   type="password"
                   className="w-full max-w-md py-2 px-4 rounded-lg outline-none"
                   placeholder={t("password")}
-                  onChange={(e) => setContrasena(e.target.value)}
+                  onChange={(e) => {
+                    setContrasena(e.target.value);
+                    setError(false);
+                    setAlert(false);
+                  }}
                 />
               </div>
+              {error && (
+                <div className="error">
+                  <p>{t("error")}</p>
+                </div>
+              )}
               <div className="w-full max-w-md mx-auto flex items-center justify-between text-gray-500 mb-8"></div>
               <div className="w-full max-w-md mx-auto">
                 <button

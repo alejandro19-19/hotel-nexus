@@ -6,5 +6,7 @@
     "password": "Contraseña",
     "login": "Iniciar sesion",
     "question": "¿No tienes una cuenta?",
-    "register": "Registrate"
+    "register": "Registrate",
+    "error": "Datos inválidos, por favor intenta de nuevo",
+    "success": "Haz ingresado correctamente"
 }

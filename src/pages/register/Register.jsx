@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import icon from "../../assets/flecha.png";
 import LanguageIcon from "@mui/icons-material/Language";
 import { useTranslation } from "react-i18next";
+import AlertMessage from "../../components/alertMessage/AlertMessage";
 
 function Register() {
   const [t, i18n] = useTranslation("register");
@@ -14,6 +15,9 @@ function Register() {
   const [direccionResidencia, setDireccionResidencia] = useState("");
   const [fechaNacimiento, setFechaNacimiento] = useState("");
   const [contrasena, setContrasena] = useState("");
+  const [alert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
+  const [typeError, setTypeError] = useState("success");
 
   const navigate = useNavigate();
 
@@ -45,11 +49,15 @@ function Register() {
 
     const response = await consultaUsuarioBD(datos);
     console.log("response:", response);
+    setMessage(t("success"));
+    setTypeError("success");
+    setAlert(true);
   };
 
   return (
     <>
       <div className="Register grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+        {alert ? <AlertMessage message={message} type={typeError} /> : null}
         <div className="idioma">
           <LanguageIcon
             style={{ color: "black", fontSize: 40, cursor: "pointer" }}
