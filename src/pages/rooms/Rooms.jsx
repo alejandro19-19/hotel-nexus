@@ -53,9 +53,9 @@ const Rooms = () => {
       >
         <img src={home_icon} alt="home" />
       </div>
-      <div className="settings_rooms">
+      {/* <div className="settings_rooms">
         <Settings />
-      </div>
+      </div> */}
       <Header title={t("rooms")} subtitle={t("description")} />
       <div className="register_room">
         <h1>{t("register")}</h1>
