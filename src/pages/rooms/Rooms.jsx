@@ -24,6 +24,9 @@ const Rooms = () => {
     "http://127.0.0.1:8000/core/rooms/free"
   );
 
+  console.log("Ocupado", dataOccupeid);
+  console.log("Libre", dataFree);
+
   function sendData() {
     fetch("http://127.0.0.1:8000/core/admin", {
       method: "POST",
@@ -105,6 +108,7 @@ const Rooms = () => {
                 key={item.habitacion_id.id}
                 number={item.habitacion_id.numero}
                 available={item.habitacion_id.disponible}
+                data={item}
               />
             );
           })}
@@ -115,6 +119,7 @@ const Rooms = () => {
                 key={item.id}
                 number={item.numero}
                 available={item.disponible}
+                data={item}
               />
             );
           })}
