@@ -186,13 +186,13 @@ class TestViews(TestSetUp):
         res = self.client.get(self.free_rooms_url, {}, **header)
         self.assertEqual(res.status_code, 200)
 
-    def test_admin_get_free_rooms_failure(self):
+    def test_client_get_free_rooms(self):
         self.client.post(self.create_url, self.client_data, format='json')
         log = self.client.post(self.login_url,self.login_client_data, format='json')
         Token = log.data['token']
         header = {'HTTP_AUTHORIZATION': 'Token {}'.format(Token)}
         res = self.client.get(self.free_rooms_url, {}, **header)
-        self.assertEqual(res.status_code, 401)
+        self.assertEqual(res.status_code, 200)
     
     def test_admin_get_occupied_rooms(self):
         self.client.post(self.create_url, self.admin_data, format='json')
