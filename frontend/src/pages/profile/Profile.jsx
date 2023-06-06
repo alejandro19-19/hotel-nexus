@@ -69,6 +69,22 @@ const Profile = () => {
           </Box>
         )}
       </div>
+      {/* {!loading && (
+        <div className="room">
+          {console.log(data)}
+          {data.info_user.habitacion_id != null ? (
+            <>
+              Tienes una habitación asignada
+              <button>Ver</button>
+            </>
+          ) : (
+            <>
+              No tienes una habitación asignada
+              <button>Deseo asignar una</button>
+            </>
+          )}
+        </div>
+      )} */}
     </div>
   );
 };

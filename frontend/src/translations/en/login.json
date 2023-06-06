@@ -6,5 +6,7 @@
     "password": "Password",
     "login": "Sign in",
     "question": "You do not have an account?",
-    "register": "Sign up"
+    "register": "Sign up",
+    "error": "Invalid data, please try again",
+    "success": "You have entered correctly"
 }
