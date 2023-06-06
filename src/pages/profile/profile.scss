@@ -30,7 +30,7 @@
   .settings_profile {
     position: absolute;
     top: 15px;
-    right: 0;
+    right: 30px;
   }
 
   .formulario {
@@ -71,6 +71,28 @@
         margin: 0;
         font-size: 18px;
         color: white;
+      }
+    }
+  }
+
+  .room {
+    margin-top: 20px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      margin-left: 30px;
+      padding: 10px;
+      background-color: rgb(28, 28, 66);
+      border-radius: 10px;
+      transition: .3s ease;
+
+      &:hover {
+        transform: scale(105%);
+        background-color: rgba(28, 28, 66, 0.514);
       }
     }
   }
