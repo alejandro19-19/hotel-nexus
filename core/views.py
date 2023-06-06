@@ -145,7 +145,7 @@ def get_clients(request):
 @permission_classes([IsAuthenticated])
 def get_free_rooms(request):
     user = Token.objects.get(key=request.auth.key).user
-    if user.is_admin == True or user.is_recepcionista == True:
+    if user.is_admin == True or user.is_recepcionista == True or user.is_client == True :
         rooms = Habitacion.objects.filter(disponible = True)
         serializer = RoomSerializer(
             rooms, many=True, context={'request': request})
