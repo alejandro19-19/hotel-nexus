@@ -52,7 +52,7 @@ jobs:
           docker-compose -f pruebasFuncionales.yml up -d
           cd backend
           cd core
-          cd func_test
+          cd func-tests
           python pruebas_funcionales.py
   deploy:
     needs: test
