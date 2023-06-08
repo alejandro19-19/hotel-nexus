@@ -50,7 +50,9 @@ jobs:
           pip install -r requirements_func_test.txt
           cd ..
           docker-compose -f pruebasFuncionales.yml up -d
-          cd backend/core/func_test
+          cd backend
+          cd core
+          cd func_test
           python pruebas_funcionales.py
   deploy:
     needs: test
