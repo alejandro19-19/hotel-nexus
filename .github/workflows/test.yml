@@ -27,21 +27,21 @@ jobs:
       if: ${{ needs.sonarcloud.result == 'failure' }}
       uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_CHANNEL: prueba-webhook
+        SLACK_CHANNEL: sonarqube
         SLACK_COLOR: "#9e2a2b"
         #SLACK_ICON: https://someurl.com/logo.png
         SLACK_MESSAGE: "failed coverage tests"
         SLACK_TITLE: Failed execution
         SLACK_USERNAME: Deploy Bot
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
     - name: Successful coverage tests
       if: ${{ needs.sonarcloud.result == 'success' }}
       uses: rtCamp/action-slack-notify@v2
       env:
-        SLACK_CHANNEL: prueba-webhook
+        SLACK_CHANNEL: sonarqube
         SLACK_COLOR: "#52FF33"
         #SLACK_ICON: https://someurl.com/logo.png
         SLACK_MESSAGE: "successful coverage tests"
         SLACK_TITLE: Successful execution
         SLACK_USERNAME: Deploy Bot
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
