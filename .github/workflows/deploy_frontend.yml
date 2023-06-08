@@ -31,3 +31,23 @@ jobs:
       run: |
         docker-compose -f pruebasFuncionales.yml build mystore_frontend
         docker-compose -f pruebasFuncionales.yml push mystore_frontend
+  test:
+    needs: push_to_registry
+    name: testing
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0   
+      - name: Set up Python 
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: test
+        run: | 
+          cd backend
+          python -m pip install --upgrade pip
+          pip install -r requirements_func_test.txt
+          docker-compose -f pruebasFuncionales.yml up
+          cd core/func_test
+          python pruebas_funcionales.py
