@@ -2,8 +2,14 @@ from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 
-web = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.add_argument("--headless")
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+
+web = webdriver.Chrome(options=chrome_options)
 web.get('http://localhost:8000/core/create')
 
 #crear un admin
