@@ -33,7 +33,7 @@ jobs:
         SLACK_MESSAGE: "failed coverage tests"
         SLACK_TITLE: Failed execution
         SLACK_USERNAME: Deploy Bot
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
     - name: Successful coverage tests
       if: ${{ needs.sonarcloud.result == 'success' }}
       uses: rtCamp/action-slack-notify@v2
@@ -44,4 +44,4 @@ jobs:
         SLACK_MESSAGE: "successful coverage tests"
         SLACK_TITLE: Successful execution
         SLACK_USERNAME: Deploy Bot
-        SLACK_WEBHOOK: https://hooks.slack.com/services/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
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
