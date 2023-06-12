@@ -23,5 +23,4 @@ test("Button click", () => {
 
   const button = component.getByTestId("click");
   fireEvent.click(button);
-
 });
