@@ -32,7 +32,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
@@ -246,7 +246,20 @@
 <a name='L181'></a><a href='#L181'>181</a>
 <a name='L182'></a><a href='#L182'>182</a>
 <a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L184'></a><a href='#L184'>184</a>
+<a name='L185'></a><a href='#L185'>185</a>
+<a name='L186'></a><a href='#L186'>186</a>
+<a name='L187'></a><a href='#L187'>187</a>
+<a name='L188'></a><a href='#L188'>188</a>
+<a name='L189'></a><a href='#L189'>189</a>
+<a name='L190'></a><a href='#L190'>190</a>
+<a name='L191'></a><a href='#L191'>191</a>
+<a name='L192'></a><a href='#L192'>192</a>
+<a name='L193'></a><a href='#L193'>193</a>
+<a name='L194'></a><a href='#L194'>194</a>
+<a name='L195'></a><a href='#L195'>195</a>
+<a name='L196'></a><a href='#L196'>196</a>
+<a name='L197'></a><a href='#L197'>197</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -429,6 +442,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import "./faceRegister.scss";
 import Settings from "../../components/settings/Settings";
 import Header from "../../components/header/Header";
@@ -441,11 +467,11 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 //import { DataObjectOutlined } from "@mui/icons-material";
 &nbsp;
-function FaceRegister() {
+function FaceRegister({ userType }) {
   const [t] = useTranslation("faceRegister");
-  
+&nbsp;
   const [data, setData] = <span class="cstat-no" title="statement not covered" >useState({</span>
-    tipo: "Cliente",
+    tipo: userType,
     nombre: "",
     apellido: "",
     email: "",
@@ -454,7 +480,7 @@ function FaceRegister() {
     salario: "0",
     password: "",
   });
-  
+&nbsp;
   const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
   const isNonMobile = <span class="cstat-no" title="statement not covered" >useMediaQuery("(min-width:600px)");</span>
 &nbsp;
@@ -468,20 +494,20 @@ function FaceRegister() {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify({
-        tipo: "Cliente",
+        tipo: userType,
         nombre: values.nombre,
         apellido: values.apellido,
         email: values.email,
         direccion: values.direccion,
         fecha_nacimiento: values.fecha_nacimiento,
-        salario: "0",
+        salario: values.salario,
         password: values.contraseña,
       }),
     };
 &nbsp;
     console.log("los Dat<span class="cstat-no" title="statement not covered" >os:", datos);</span>
 &nbsp;
-    const response = <span class="cstat-no" title="statement not covered" >await consultaUsuarioBD(datos)</span>
+    const response = <span class="cstat-no" title="statement not covered" >await consultaUsuarioBD(datos);</span>
 &nbsp;
     console.log("respons<span class="cstat-no" title="statement not covered" >e:", response);</span>
   };
@@ -501,7 +527,7 @@ function FaceRegister() {
           &lt;img src={home_icon} alt="home" /&gt;
         &lt;/div&gt;
         &lt;div className="settings_faceRegister"&gt;
-        &lt;Settings/&gt;
+          &lt;Settings /&gt;
         &lt;/div&gt;
         &lt;Header title={t("title")} subtitle={t("sub_title")} /&gt;
         &lt;div className="formulario"&gt;
@@ -530,7 +556,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("name")} 
+                    label={t("name")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="nombre"
@@ -541,7 +567,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("last_name")} 
+                    label={t("last_name")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="apellido"
@@ -552,7 +578,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("email")} 
+                    label={t("email")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="email"
@@ -563,7 +589,7 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="text"
-                    label={t("address")} 
+                    label={t("address")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="direccion"
@@ -574,18 +600,31 @@ function FaceRegister() {
                     fullWidth
                     variant="filled"
                     type="date"
-                    label={t("date")} 
+                    label={t("date")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="fecha_nacimiento"
                     disabled={false}
                     sx={{ gridColumn: "span 4" }}
                   /&gt;
+                  {userType == "Receptionist" &amp;&amp; (
+                    &lt;TextField
+                      fullWidth
+                      variant="filled"
+                      type="text"
+                      label={t("salary")}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                      name="salario"
+                      disabled={false}
+                      sx={{ gridColumn: "span 4" }}
+                    /&gt;
+                  )}
                   &lt;TextField
                     fullWidth
                     variant="filled"
                     type="password"
-                    label={t("password")} 
+                    label={t("password")}
                     onBlur={handleBlur}
                     onChange={handleChange}
                     name="contraseña"
@@ -600,7 +639,7 @@ function FaceRegister() {
                   mt="20px"
                 &gt;
                   &lt;Button type="submit" variant="contained"&gt;
-                    {t("register")} 
+                    {t("register")}
                   &lt;/Button&gt;
                 &lt;/Box&gt;
               &lt;/form&gt;
@@ -619,7 +658,7 @@ export default FaceRegister;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-31T17:57:37.546Z
+                at 2023-06-12T18:24:58.575Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
