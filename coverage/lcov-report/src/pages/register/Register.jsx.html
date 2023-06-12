@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">2.5% </span>
+                <span class="strong">2.17% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/40</span>
+                <span class='fraction'>1/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">3.44% </span>
+                <span class="strong">2.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/29</span>
+                <span class='fraction'>1/35</span>
             </div>
         
             
@@ -227,7 +227,16 @@
 <a name='L162'></a><a href='#L162'>162</a>
 <a name='L163'></a><a href='#L163'>163</a>
 <a name='L164'></a><a href='#L164'>164</a>
-<a name='L165'></a><a href='#L165'>165</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a>
+<a name='L168'></a><a href='#L168'>168</a>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -243,6 +252,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -274,9 +286,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -398,6 +414,7 @@ import { useNavigate } from "react-router-dom";
 import icon from "../../assets/flecha.png";
 import LanguageIcon from "@mui/icons-material/Language";
 import { useTranslation } from "react-i18next";
+import AlertMessage from "../../components/alertMessage/AlertMessage";
 &nbsp;
 function Register() {
   const [t, i18n] = useTranslation("register");
@@ -407,6 +424,9 @@ function Register() {
   const [direccionResidencia, setDireccionResidencia] = <span class="cstat-no" title="statement not covered" >useState("");</span>
   const [fechaNacimiento, setFechaNacimiento] = <span class="cstat-no" title="statement not covered" >useState("");</span>
   const [contrasena, setContrasena] = <span class="cstat-no" title="statement not covered" >useState("");</span>
+  const [alert, setAlert] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+  const [message, setMessage] = <span class="cstat-no" title="statement not covered" >useState("");</span>
+  const [typeError, setTypeError] = <span class="cstat-no" title="statement not covered" >useState("success");</span>
 &nbsp;
   const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
 &nbsp;
@@ -418,7 +438,7 @@ function Register() {
   const registro = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (e) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
     let toSend = <span class="cstat-no" title="statement not covered" >{</span>
-      tipo: "Cliente",
+      tipo: "Client",
       nombre: nombre,
       apellido: apellidos,
       email: correo,
@@ -438,11 +458,15 @@ function Register() {
 &nbsp;
     const response = <span class="cstat-no" title="statement not covered" >await consultaUsuarioBD(datos);</span>
     console.log("respons<span class="cstat-no" title="statement not covered" >e:", response);</span>
+<span class="cstat-no" title="statement not covered" >    setMessage(t("success"));</span>
+<span class="cstat-no" title="statement not covered" >    setTypeError("success");</span>
+<span class="cstat-no" title="statement not covered" >    setAlert(true);</span>
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;&gt;
       &lt;div className="Register grid grid-cols-1 lg:grid-cols-2 min-h-screen"&gt;
+        {alert ? &lt;AlertMessage message={message} type={typeError} /&gt; : null}
         &lt;div className="idioma"&gt;
           &lt;LanguageIcon
             style={{ color: "black", fontSize: 40, cursor: "pointer" }}
@@ -562,7 +586,7 @@ export default Register;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-31T17:57:37.546Z
+                at 2023-06-12T18:24:58.575Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
