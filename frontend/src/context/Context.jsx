@@ -5,7 +5,7 @@ export default function ContextProvider({ children }) {
   let data = {
     loggedIn: false,
     typeUser: "",
-    name: "",
+    name: "nn",
     token: "",
   };
   const [appState, setAppState] = useState(data);

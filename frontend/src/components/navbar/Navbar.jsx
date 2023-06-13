@@ -16,12 +16,12 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const isNonMobile = useMediaQuery("(min-width:600px)");
-  const [t, i18n] = useTranslation("homePage");
+  // const [t, i18n] = useTranslation("homePage");
   const navigate = useNavigate();
 
   const navLinksPage = [
-    { title: t("login"), path: "/login", icon: loginImage },
-    { title: t("register"), path: "/register", icon: registerImage },
+    { title: "login", path: "/login", icon: loginImage },
+    { title: "register", path: "/register", icon: registerImage },
   ];
 
   return (
@@ -48,7 +48,7 @@ const Navbar = () => {
         />
         {isNonMobile ? (
           <Box display={"flex"} alignItems={"center"}>
-            {navLinksPage.map((item) => {
+            {navLinksPage?.map((item) => {
               return (
                 <button
                   key={item.title}
@@ -62,13 +62,13 @@ const Navbar = () => {
               );
             })}
             <LanguageIcon
-              style={{ color: "white", fontSize: 40, cursor: "pointer" }}
               data-testid="click-lng"
-              onClick={() => {
-                i18n.language === "es"
-                  ? i18n.changeLanguage("en")
-                  : i18n.changeLanguage("es");
-              }}
+              style={{ color: "white", fontSize: 40, cursor: "pointer" }}
+              // onClick={() => {
+              //   i18n.language === "es"
+              //     ? i18n.changeLanguage("en")
+              //     : i18n.changeLanguage("es");
+              // }}
             />
           </Box>
         ) : (

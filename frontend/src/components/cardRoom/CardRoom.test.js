@@ -1,32 +1,53 @@
 import React from "react";
-import "@testing-library/jest-dom/extend-expect";
 import { render, fireEvent } from "@testing-library/react";
 import CardRoom from "./CardRoom";
 import { BrowserRouter } from "react-router-dom";
-import { I18nextProvider } from "react-i18next";
-import i18next from "i18next";
+import { Context } from "../../context/Context";
+import { MemoryRouter } from "react-router-dom";
 
 test("renders content cardroom", () => {
-  const componente = render(
+  const mockData = {}; // Mock data to be passed as props
+  const setAppState = jest.fn(); // Mock function for setAppState
+
+  // Render the component within a context provider and router
+  const { getByTestId } = render(
     <BrowserRouter>
-      <I18nextProvider i18n={i18next}>
-        <CardRoom />
-      </I18nextProvider>
+      <Context.Provider value={{ appState: {}, setAppState }}>
+        <CardRoom number={1} available={true} data={mockData} />
+      </Context.Provider>
     </BrowserRouter>
   );
-  componente.debug();
+
+  const button = getByTestId("btn");
+  fireEvent.click(button);
+
+  // Add assertions here based on the expected behavior of the component
+  expect(setAppState).toHaveBeenCalledTimes(1);
+  expect(setAppState).toHaveBeenCalledWith({
+    ...{},
+    temporalData: mockData,
+  });
 });
 
-// test("Button click cardroom", () => {
+test("navigates to correct route based on availability", () => {
+  const mockData = {}; // Mock data to be passed as props
+  const setAppState = jest.fn(); // Mock function for setAppState
 
-//   const component = render(
-//     <BrowserRouter>
-//       <I18nextProvider i18n={i18next}>
-//         <CardRoom />
-//       </I18nextProvider>
-//     </BrowserRouter>
-//   );
+  // Render the component within a context provider and router
+  const { getByTestId } = render(
+    <MemoryRouter>
+      <Context.Provider value={{ appState: {}, setAppState }}>
+        <CardRoom number={1} available={false} data={mockData} />
+      </Context.Provider>
+    </MemoryRouter>
+  );
 
-//   const button = component.getByTestId("click2");
-//   fireEvent.click(button);
-// });
+  const button = getByTestId("btn");
+  fireEvent.click(button);
+
+  expect(setAppState).toHaveBeenCalledTimes(1);
+  expect(setAppState).toHaveBeenCalledWith({
+    ...mockData,
+    temporalData: mockData,
+  });
+});
