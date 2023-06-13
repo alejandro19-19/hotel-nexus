@@ -17,7 +17,7 @@ const CardRoom = ({ number, available, data }) => {
         <p>{available ? t("free") : t("occupied")}</p>
       </div>
       <button
-        data-testid="click2"
+        data-testid="btn"
         onClick={() => {
           context.setAppState({ ...context.appState, temporalData: data });
           if (available) {

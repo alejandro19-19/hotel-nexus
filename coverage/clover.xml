@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1686594298824" clover="3.2.0">
-  <project timestamp="1686594298824" name="All files">
-    <metrics statements="312" coveredstatements="74" conditionals="104" coveredconditionals="6" methods="137" coveredmethods="25" elements="553" coveredelements="105" complexity="0" loc="312" ncloc="312" packages="26" files="29" classes="29"/>
+<coverage generated="1686659250282" clover="3.2.0">
+  <project timestamp="1686659250283" name="All files">
+    <metrics statements="308" coveredstatements="95" conditionals="100" coveredconditionals="17" methods="136" coveredmethods="36" elements="544" coveredelements="148" complexity="0" loc="308" ncloc="308" packages="26" files="29" classes="29"/>
     <package name="src">
       <metrics statements="3" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="App.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\App.jsx">
@@ -15,31 +15,29 @@
       </file>
     </package>
     <package name="src.components.alertMessage">
-      <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
       <file name="AlertMessage.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\alertMessage\AlertMessage.jsx">
-        <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="6" count="5" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
         <line num="10" count="5" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
       </file>
     </package>
     <package name="src.components.buttonIcon">
-      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <metrics statements="7" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="ButtonIcon.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\buttonIcon\ButtonIcon.jsx">
-        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <metrics statements="7" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="9" count="7" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="20" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="13" type="stmt"/>
+        <line num="11" count="13" type="stmt"/>
+        <line num="12" count="13" type="stmt"/>
+        <line num="14" count="13" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
       </file>
     </package>
     <package name="src.components.cardInformation">
@@ -50,9 +48,9 @@
       </file>
     </package>
     <package name="src.components.cardMenu">
-      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
       <file name="CardMenu.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\cardMenu\CardMenu.jsx">
-        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
@@ -60,18 +58,18 @@
       </file>
     </package>
     <package name="src.components.cardRoom">
-      <metrics statements="9" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="CardRoom.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\cardRoom\CardRoom.jsx">
-        <metrics statements="9" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.header">
@@ -83,24 +81,24 @@
       </file>
     </package>
     <package name="src.components.imageSlider">
-      <metrics statements="15" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
+      <metrics statements="15" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="8" coveredmethods="8"/>
       <file name="ImageSlider.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\imageSlider\ImageSlider.jsx">
-        <metrics statements="15" coveredstatements="4" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="1"/>
+        <metrics statements="15" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="8" coveredmethods="8"/>
         <line num="11" count="4" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
-        <line num="14" count="10" type="stmt"/>
-        <line num="16" count="10" type="stmt"/>
-        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="14" count="29" type="stmt"/>
+        <line num="16" count="29" type="stmt"/>
+        <line num="28" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="29" count="2" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
-        <line num="39" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
+        <line num="39" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.loader">
@@ -116,42 +114,40 @@
       <file name="NavDrawer.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\navDrawer\NavDrawer.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
         <line num="5" count="5" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.components.navbar">
-      <metrics statements="13" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="7" coveredmethods="1"/>
+      <metrics statements="11" coveredstatements="8" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="3"/>
       <file name="Navbar.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\navbar\Navbar.jsx">
-        <metrics statements="13" coveredstatements="7" conditionals="8" coveredconditionals="3" methods="7" coveredmethods="1"/>
+        <metrics statements="11" coveredstatements="8" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="3"/>
         <line num="16" count="4" type="stmt"/>
-        <line num="17" count="6" type="stmt"/>
-        <line num="18" count="6" type="stmt"/>
-        <line num="19" count="6" type="stmt"/>
-        <line num="20" count="5" type="stmt"/>
-        <line num="22" count="5" type="stmt"/>
-        <line num="27" count="5" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
-        <line num="68" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="80" count="0" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
         <line num="88" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.settings">
-      <metrics statements="7" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
       <file name="Settings.jsx" path="D:\UNIVALLE\2023-I\Desarrollo II\Project\frontend-hotel-nexus\src\components\settings\Settings.jsx">
-        <metrics statements="7" coveredstatements="3" conditionals="6" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="11" count="6" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.context">
