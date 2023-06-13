@@ -8,6 +8,7 @@ const CardRoom = ({ number, available, data }) => {
   const [t] = useTranslation("cardRoom");
   const navigate = useNavigate("");
   const context = useContext(Context);
+  console.log(data)
   return (
     <div className="CardRoom">
       <div className="bg_img"></div>

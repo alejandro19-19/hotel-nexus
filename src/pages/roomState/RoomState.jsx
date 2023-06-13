@@ -15,8 +15,7 @@ const RoomState = ({ type }) => {
   const [typeError, setTypeError] = useState("success");
   const context = useContext(Context);
   const navigate = useNavigate("");
-  console.log(context.appState.temporalData);
-
+  console.log(context);
   async function unassignRoom() {
     fetch("http://127.0.0.1:8000/core/rooms/unassign", {
       method: "PUT",
@@ -26,7 +25,7 @@ const RoomState = ({ type }) => {
       }),
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setMessage("La habitación ahora está libre");
         setTypeError("success");
         setAlert(true);

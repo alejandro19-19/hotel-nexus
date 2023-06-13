@@ -6,11 +6,17 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { convertJSON } from "./convertJSON";
 import { useFetch } from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 
 const Clients = () => {
   const [t] = useTranslation("clients");
   const { data, loading } = useFetch("http://127.0.0.1:8000/core/client/all");
   const navigate = useNavigate("");
+  const context = useContext(Context);
+  if (!loading) {
+    console.log(data);
+  }
   // const data2 = [
   //   { id: 1, nombre: "Cliente1", apellido: "Cliente1", habitacion_id: true },
   //   { id: 2, nombre: "Cliente2", apellido: "Cliente2", habitacion_id: true },
@@ -44,14 +50,28 @@ const Clients = () => {
         );
       },
     },
-    {
-      field: "accion",
-      headerName: `${t("action")}`,
-      width: 100,
-      renderCell: (params) => {
-        return <button className="see">Ver</button>;
-      },
-    },
+    // {
+    //   field: "accion",
+    //   headerName: `${t("action")}`,
+    //   width: 100,
+    //   renderCell: (params) => {
+    //     return (
+    //       <button
+    //         className="see"
+    //         onClick={() => {
+    //           context.setAppState({ ...context.appState, temporalData: params.row });
+    //           if (available) {
+    //             navigate("/roomFree");
+    //           } else {
+    //             navigate("/roomOccupied");
+    //           }
+    //         }}
+    //       >
+    //         Ver
+    //       </button>
+    //     );
+    //   },
+    // },
   ];
 
   return (
