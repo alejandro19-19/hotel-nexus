@@ -18,54 +18,59 @@ const ImageSlider = () => {
       <div className="ImageSlider">
         <div className="container">
           <div className="slide">
-            <img src={images[image]} alt="" />
+            <img src={images[image]} alt={`Image ${image + 1}`} />
           </div>
           <div className="arrows">
             <img
               src={arrow}
-              alt="arrow"
+              alt="arrow1"
               onClick={() => {
                 if (image <= 0) {
                   setImage(4);
                 } else {
-                  setImage(image - 1)
+                  setImage(image - 1);
                 }
               }}
             />
             <img
               src={arrow}
-              alt="arrow"
+              alt="arrow2"
               onClick={() => {
                 if (image >= 4) {
                   setImage(0);
                 } else {
-                  setImage(image + 1)
+                  setImage(image + 1);
                 }
               }}
             />
           </div>
           <div className="btns">
             <button
+              data-testid="btn-1"
               onClick={() => {
                 setImage(0);
               }}
             />
             <button
+              data-testid="btn-2"
               onClick={() => {
                 setImage(1);
               }}
             />
             <button
+              data-testid="btn-3"
               onClick={() => {
                 setImage(2);
               }}
             />
             <button
+              data-testid="btn-4"
               onClick={() => {
                 setImage(3);
               }}
             />
             <button
+              data-testid="btn-5"
               onClick={() => {
                 setImage(4);
               }}

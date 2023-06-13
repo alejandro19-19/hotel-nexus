@@ -12,17 +12,21 @@ const Settings = () => {
   const [open, setOpen] = useState(false);
   const [t, i18n] = useTranslation("settings");
   const context = useContext(Context);
-  const NAME = context.appState.name;
+  let NAME = context.appState?.name;
 
   return (
     <div className="Settings">
       <div
+        data-testid="menu-toggle"
         className={`${open ? "menuToggle active" : "menuToggle"}`}
         onClick={() => {
           setOpen(!open);
         }}
       ></div>
-      <div className={`${open ? "menu activeMenu" : "menu"}`}>
+      <div
+        data-testid="menu"
+        className={`${open ? "menu activeMenu" : "menu"}`}
+      >
         <ul>
           <li>
             <p>{NAME}</p>
@@ -32,6 +36,11 @@ const Settings = () => {
           </li>
           <li>
             <ButtonIcon
+              // data-testid={
+              //   i18n.language === "es"
+              //     ? "language-button-colombia"
+              //     : "language-button-us"
+              // }
               text={t("language")}
               icon={i18n.language === "es" ? colombia : us}
               link={"language"}

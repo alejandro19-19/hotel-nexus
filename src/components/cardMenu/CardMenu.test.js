@@ -1,50 +1,65 @@
-import React from "react";
-import "@testing-library/jest-dom/extend-expect";
-import { render, fireEvent } from "@testing-library/react";
-import CardMenu from "./CardMenu";
-import { BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import { useNavigate } from 'react-router-dom';
+import CardMenu from './CardMenu';
 
-test("renders content", () => {
-  const componente = render(
-    <BrowserRouter>
-      <CardMenu />
-    </BrowserRouter>
-  );
-  componente.debug();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+}));
+
+describe('CardMenu', () => {
+  test('navega al hacer clic', () => {
+    const mockNavigate = jest.fn();
+    useNavigate.mockReturnValue(mockNavigate);
+
+    const props = {
+      title: 'Título de prueba',
+      description: 'Descripción de prueba',
+      image: 'imagen_de_prueba.jpg',
+      number: 5,
+      color: 'red',
+      path: '/ruta-de-prueba',
+    };
+
+    const { getByTestId } = render(<CardMenu {...props} />);
+    const cardMenu = getByTestId('click');
+
+    fireEvent.click(cardMenu);
+
+    expect(mockNavigate).toHaveBeenCalledWith(props.path);
+  });
+  test('renderiza la clase "red" cuando el color es "red"', () => {
+    const props = {
+      title: 'Título de prueba',
+      description: 'Descripción de prueba',
+      image: 'imagen_de_prueba.jpg',
+      number: 5,
+      color: 'red',
+      path: '/ruta-de-prueba',
+    };
+
+    const { container } = render(<CardMenu {...props} />);
+    const colorBgElement = container.querySelector('.color__bg');
+
+    expect(colorBgElement.classList.contains('red')).toBe(true);
+    expect(colorBgElement.classList.contains('purple')).toBe(false);
+  });
+
+  test('renderiza la clase "purple" cuando el color no es "red"', () => {
+    const props = {
+      title: 'Título de prueba',
+      description: 'Descripción de prueba',
+      image: 'imagen_de_prueba.jpg',
+      number: 5,
+      color: 'blue',
+      path: '/ruta-de-prueba',
+    };
+
+    const { container } = render(<CardMenu {...props} />);
+    const colorBgElement = container.querySelector('.color__bg');
+
+    expect(colorBgElement.classList.contains('red')).toBe(false);
+    expect(colorBgElement.classList.contains('purple')).toBe(true);
+  });
 });
-
-test("Button click", () => {
-  const component = render(
-    <BrowserRouter>
-      <CardMenu />
-    </BrowserRouter>
-  );
-
-  const button = component.getByTestId("click");
-  fireEvent.click(button);
-});
-
-// test("color", () => {
-//   const color = "red";
-
-//   const component = render(
-//     <BrowserRouter>
-//       <CardMenu color={color} />
-//     </BrowserRouter>
-//   );
-
-//   // component.getByText("rgba(102, 0, 0, 0.9)");
-//   it("should render style", () => {
-//     component
-//       .expect(
-//         shallow(
-//           <div
-//             style={{
-//               backgroundColor: "rgba(102, 0, 0, 0.9)",
-//             }}
-//           />
-//         )
-//       )
-//       .to.have.style("backgroundColor", "rgba(102, 0, 0, 0.9)");
-//   });
-// });

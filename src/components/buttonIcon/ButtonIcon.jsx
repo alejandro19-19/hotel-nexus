@@ -14,7 +14,7 @@ const ButtonIcon = ({ text, icon, link }) => {
   return (
     <div
       className="ButtonIcon"
-      data-testid="click"
+      data-testid="btn-div"
       onClick={() => {
         link == "language" ? changeLanguage(i18n) : navigate(link);
         link === "/" &&
