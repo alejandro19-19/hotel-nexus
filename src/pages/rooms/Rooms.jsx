@@ -34,10 +34,11 @@ const Rooms = () => {
         Authorization: `${context.appState.token}`,
         "Content-type": "application/json",
       },
-      body: JSON.stringify({ disponible: occupied, numero: number }),
+      body: JSON.stringify({ disponible: true, numero: number }),
     }).then((res) => {
       setNumber("");
       setOccupied("");
+      console.log("listo")
     });
   }
 
@@ -70,12 +71,12 @@ const Rooms = () => {
               value={number}
               onChange={(e) => setNumber(e.target.value)}
             />
-            <p>{t("available")}:</p>
+            {/* <p>{t("available")}:</p>
             <input
               type="text"
               value={occupied}
               onChange={(e) => setOccupied(e.target.value)}
-            />
+            /> */}
             <button type="submit">{t("create")}</button>
           </div>
         </form>

@@ -21,7 +21,7 @@ const Reservations = () => {
 
   async function assignRoom() {
     let room = generateRandomRoom(dataRooms);
-    fetch("http://127.0.0.1:8000/core/rooms/assign", {
+    fetch("http://127.0.0.1:8000/core/client", {
       method: "PUT",
       headers: {
         Authorization: context.appState.token,
@@ -31,7 +31,7 @@ const Reservations = () => {
         id_user: dataUser.info_user.id_user.id,
         habitacion_id: room,
       }),
-    });
+    }).then((res) => console.log("listo"));
   }
   function generateRandomRoom(data) {
     let rooms = [];
