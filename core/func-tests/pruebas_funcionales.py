@@ -4,14 +4,27 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.chrome.options import Options
 
+from selenium.webdriver.chrome.service import Service
+from chromedriver_py import binary_path # this will get you the path variable
+
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 chrome_options.add_argument("--disable-dev-shm-usage")
 
-web = webdriver.Chrome(options=chrome_options)
+service_object = Service(binary_path)
+web = webdriver.Chrome(service=service_object,options=chrome_options)
+
+# deprecated but works in older selenium versions
+#web = webdriver.Chrome(executable_path=binary_path)
 web.get('http://localhost:8000/core/create')
 
+
+#web = webdriver.Chrome(options=chrome_options)
+#web = webdriver.Chrome()
+web.get('http://localhost:8000/core/create')
+time.sleep(1)
+"""
 #crear un admin
 type = "Admin"
 tipo = web.find_element(By.XPATH,'//*[@id="post-object-form"]/form/fieldset/div[1]/div/input')
@@ -47,12 +60,12 @@ contrasenha.send_keys(password)
 
 submit = web.find_element(By.XPATH,'//*[@id="post-object-form"]/form/fieldset/div[9]/button')
 submit.click()
-
+print("se creo el administrador")
 #loguearse con el admin
 
 #web.find_element(By.XPATH,'')
 time.sleep(1)
-
+"""
 #crear usuario
 web.get('http://localhost:8085/')
 
@@ -92,8 +105,10 @@ try:
     get_confirmation_user_create = web.find_element(By.XPATH,'//*[@id="root"]/div/div/div[2]')
     if not get_confirmation_user_create:
         raise AssertionError("El cliente no puede ver su perfil")
+    print("se creo el cliente")
 except NoSuchElementException:
     time.sleep(1)
+    
 #revisar si esto esta bien cuando el frontend arregle el codigo ---------------------------------------
 
 #time.sleep(20)
@@ -123,6 +138,7 @@ try:
     get_confirmation_login = web.find_element(By.XPATH,'//*[@id="root"]/div/div/div[4]/div[3]/form/div[3]/p')
     if "Invalid data, please try again" in get_confirmation_login.text:
         raise AssertionError("El cliente no puede logearse")
+    print("se logeo el cliente")
 except NoSuchElementException:
     time.sleep(5)
 
@@ -133,6 +149,7 @@ try:
     get_confirmation_profile = web.find_element(By.XPATH, '//*[@id="root"]/div/div/div[3]/h4')
     if not get_confirmation_profile:
         raise AssertionError("El cliente no puede ver su perfil")
+    print("el cliente puede revisar su perfil")
     time.sleep(1)
 except NoSuchElementException:
     time.sleep(1)
@@ -149,4 +166,5 @@ time.sleep(1)
 get_room = web.find_element(By.XPATH,'//*[@id="root"]/div/div/div[3]/button')
 get_room.click()
 
-time.sleep(6)
+print("se han terminado las pruebas con exito")
+time.sleep(1)
