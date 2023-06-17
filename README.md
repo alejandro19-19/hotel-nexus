@@ -35,7 +35,7 @@ coverage el cual es tomado por la herramienta sonarcloud para llevar un monitore
 
 ## Pruebas unitarias Frontend
 
-Las pruebas unitarias del frntend se ejecutan mendiante un workflow, el cual se activa cada vez que se abre un pull request dentro del repostorio backend para realizar un merge, ya sea desde una nueva rama de historia
+Las pruebas unitarias del frntend se ejecutan mendiante un workflow, el cual se activa cada vez que se abre un pull request dentro del repostorio frontend para realizar un merge, ya sea desde una nueva rama de historia
 de usuario a la rama develop o de la rama develop a la rama master, este workflow se encarga de preparar un entorno de pruebas, posteriormente ejecuta las pruebas unitarias con Jest y la librería testing-library, esta generan un reporte
 coverage el cual es tomado por la herramienta SonarCloud para llevar un monitoreo de la calidad del codigo que se añade al proyecto.
 Las principales pruebas realizadas son de renderizado y funcionamiento de botones, entre otros.
