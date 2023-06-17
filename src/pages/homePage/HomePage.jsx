@@ -6,7 +6,7 @@ import CardInformation from "../../components/cardInformation/CardInformation";
 import imgMision from "../../assets/mision.png";
 import imgVision from "../../assets/vision.png";
 import ImageSlider from "../../components/imageSlider/ImageSlider";
-//HomePage
+
 const HomePage = () => {
   const [t] = useTranslation("homePage");
   const mision = {
