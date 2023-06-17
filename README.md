@@ -27,20 +27,22 @@ Finalmente, cuando las pruebas funcionales son exitosas, llegamos a la etapa del
 
 Una vez que la aplicación está en funcionamiento, utilizamos herramientas de monitoreo para supervisar su rendimiento y estado. Esto nos permite detectar y solucionar cualquier problema que pueda surgir rápidamente.
 
-## Pruebas unitarias Backend
+## Pruebas unitarias y de integracion Backend
 
-Las pruebas unitarias del backend se ejecutan mendiante un workflow, el cual se activa cada vez que se abre un pull request dentro del repostorio backend para realizar un merge, ya sea desde una nueva rama de historia
-de usuario a la rama develop o de la rama develop a la rama master, este workflow se encarga de preparar un entorno de pruebas, posteriormente ejecuta las pruebas unitarias de el modulo test de django y genera un reporte
-coverage el cual es tomado por la herramienta sonarcloud para llevar un monitoreo de la calidad del codigo que se añade al proyecto.
+Las pruebas unitarias del backend se ejecutan mediante un workflow, el cual se activa cada vez que se abre un pull request dentro del repositorio backend para realizar un merge, ya sea desde una nueva rama de historia
+de usuario a la rama develop o de la rama develop a la rama master, este workflow se encarga de preparar un entorno de pruebas, posteriormente ejecuta las pruebas unitarias del modulo test de django y genera un reporte
+de coverage el cual es tomado por la herramienta sonarCloud para llevar un monitoreo de la calidad del codigo que se añade al proyecto.
 
-## Pruebas unitarias Frontend
+## Pruebas unitarias y de integracion Frontend
 
-Las pruebas unitarias del frntend se ejecutan mendiante un workflow, el cual se activa cada vez que se abre un pull request dentro del repostorio frontend para realizar un merge, ya sea desde una nueva rama de historia
+Las pruebas unitarias del frntend se ejecutan mediante un workflow, el cual se activa cada vez que se abre un pull request dentro del repositorio frontend para realizar un merge, ya sea desde una nueva rama de historia
 de usuario a la rama develop o de la rama develop a la rama master, este workflow se encarga de preparar un entorno de pruebas, posteriormente ejecuta las pruebas unitarias con Jest y la librería testing-library, esta generan un reporte
-coverage el cual es tomado por la herramienta SonarCloud para llevar un monitoreo de la calidad del codigo que se añade al proyecto.
+de coverage el cual es tomado por la herramienta SonarCloud para llevar un monitoreo de la calidad del codigo que se añade al proyecto.
 Las principales pruebas realizadas son de renderizado y funcionamiento de botones, entre otros.
 
 ## Pruebas funcionales
+
+Las pruebas funcionales del proyecto se realizan mediante un workflow y un script en python, este workflow se ejecuta cada vez que hay alguna modificacion en el frontend o el backend dentro del repositorio principal y se encarga de preparar un entorno de pruebas el cual levanta contenedores de Docker con la imagen del proyecto y dentro de estos se corre el script de pruebas funcionales que esta hecho con la herramienta Selenium.
 
 ## Despliegue
 
