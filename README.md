@@ -35,7 +35,7 @@ de coverage el cual es tomado por la herramienta sonarCloud para llevar un monit
 
 ## Pruebas unitarias y de integracion Frontend
 
-Las pruebas unitarias del frntend se ejecutan mediante un workflow, el cual se activa cada vez que se abre un pull request dentro del repositorio frontend para realizar un merge, ya sea desde una nueva rama de historia
+Las pruebas unitarias del frontend se ejecutan mediante un workflow, el cual se activa cada vez que se abre un pull request dentro del repositorio frontend para realizar un merge, ya sea desde una nueva rama de historia
 de usuario a la rama develop o de la rama develop a la rama master, este workflow se encarga de preparar un entorno de pruebas, posteriormente ejecuta las pruebas unitarias con Jest y la librería testing-library, esta generan un reporte
 de coverage el cual es tomado por la herramienta SonarCloud para llevar un monitoreo de la calidad del codigo que se añade al proyecto.
 Las principales pruebas realizadas son de renderizado y funcionamiento de botones, entre otros.
@@ -46,5 +46,8 @@ Las pruebas funcionales del proyecto se realizan mediante un workflow y un scrip
 
 ## Despliegue
 
+Los despliegues del proyecto se realizan mediante un workflow, el cual se activa cada vez que hay alguna modificacion en el frontend o el backend dentro del repositorio principal y todas las pruebas han sido ejecutadas exitosamente, se realiza el despligue (para el backend se utiliza zappa para subir los cambios a una funcion lambda en AWS y para el frontend se suben los cambios a la herramienta amplify en AWS, estos servicios estan vinculado con el repositorio principal)
+
 ## Monitoreo
 
+El monitoreo de la aplicacion se divide en 2 partes, preproduccion y produccion, en la primera etapa tenemos todo lo referente a notificaciones en slack cuando las pruebas unitarias o de integracion fallan para tener un conocimiento de los errores en la aplicacion, tenemos el flujo de trabajo en trello para conocer como va el avance de los 2 grupos de trabajo y el burndown chart para saber si estamos atrasados con el desarrollo del proyecto o no. La segunda etapa consiste del monitoreo que nos ofrece amazon tanto para nuestra funcion lambda (el backend) como en amplify (frontend) brindandonos datos de errores, flujo de consultas, actividad, etc. 
